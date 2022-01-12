@@ -1,0 +1,14 @@
+{
+  "name": "proyectonode01",
+  "version": "1.0.0",
+  "description": "Primer proyecto en node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodeJs"
+  ],
+  "author": "Damian",
+  "license": "ISC"
+}
