@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "name": "Lapicera",
+    "price": 50,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpWF_1EcjTutqM9l2oo73rBjM0KBAWiAgwMA&usqp=CAU ",
+    "id": 1
+  },
+  {
+    "name": "Cuaderno",
+    "price": 100,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7aZ4g4v0PPrJcaiQ-AesNiU95ZZEi_KejQ&usqp=CAU",
+    "id": 2
+  }
+]
