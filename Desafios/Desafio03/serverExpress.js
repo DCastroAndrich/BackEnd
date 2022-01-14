@@ -5,7 +5,7 @@ const app = express();
 
 const PORT = 8080;
 
-let obj = new Contenedor("./container/productos.txt");
+const obj = new Contenedor("./container/productos.txt");
 
 let productsArr = obj.getAll();
 
@@ -19,18 +19,18 @@ app.get("/", (req, res) => {
 app.get("/productos", (req, res) => {
   let msg = productsArr;
 
-  res.send({ msg });
+  res.send(msg);
 
   console.log(msg);
 });
 
 app.get("/productoRandom", (req, res) => {
     
-   let num = Math.floor((Math.random() * 99) + 1)
+   let num = Math.floor((Math.random() * productsArr.length) + 1)
 
-  
+    let msg = obj.getById(num)
 
-  res.send();
+  res.send(msg);
 });
 
 const server = app.listen(PORT, () => {
