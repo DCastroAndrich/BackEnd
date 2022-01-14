@@ -24,7 +24,7 @@ app.get('/visitas', (req, res)=> {
 })
 app.get('/fyh', (req, res)=> {
     
-    let date = moment().format('DD/MM/ YYYY')
+    let date = moment(new Date()).format('DD/MM/ YYYY')
     res.send(`<h1 style='color:blue;'>El dia de hoy es: ${date}</h1>`)
 })
 
