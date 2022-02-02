@@ -1,0 +1,23 @@
+<h2 style="color:crimson;">Historial</h2>
+<div class="table-responsive">
+  <table class="table table-dark">
+    <tr style="color: yellow;">
+      <th>Nombre del producto</th>
+      <th>Precio</th>
+      <th>Foto</th>
+    </tr>
+
+    {{#if products.[1] }}
+        {{#each products}}
+        <tr>
+            <td>{{this.name}} </td>
+            <td>${{this.price}} </td>
+            <td><img src={{this.thumbnail}} alt={{this.name}} style="width: 30px; height: 30px;"/> </td>
+        </tr>
+        {{/each}}
+       
+       
+    {{/if}}
+
+  </table>
+</div>
