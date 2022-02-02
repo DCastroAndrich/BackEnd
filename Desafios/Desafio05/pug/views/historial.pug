@@ -1,0 +1,22 @@
+extends index
+
+block historial 
+    h2(style="color: crimson;") Registro 
+
+    if {products}.length > 0
+        div(class="table-responsive")
+            table(class="table table-dark")
+                tr(style="color: yellow;")
+                    th Nombre del producto
+                    th Precio
+                    th Foto 
+                
+                each product in products
+                    tr
+                        td=product.name
+                        td=product.price
+                        td 
+                            img(src=product.thumbnail, alt=product.name)
+    
+    else 
+        h3(class="alert alert-danger") No hay productos

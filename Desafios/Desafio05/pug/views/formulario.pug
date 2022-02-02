@@ -1,0 +1,21 @@
+extends index
+
+block formulario
+    h1(style="color: blue;") Ingrese producto
+    br
+    form(action="/productos", method="post")
+        div(class="form-group")
+            label(for="name") Nombre del producto 
+            input(id="name" class="form-control" type="text" name="name") 
+        
+        div(class="form-group")
+            label(for="price") Precio 
+            input(input id="price" class="form-control" type="number" name="price")
+        
+        div(class="form-group")
+            label(for="thumbnail") Foto 
+            input(id="thumbnail" class="form-control" type="text" name="thumbnail")
+        
+        button(class="btn btn-success mt-3 mb-5") Enviar
+
+   
