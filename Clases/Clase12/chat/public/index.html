@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>chat</title>
+</head>
+
+<body>
+    <h3>Sala de chat ^^</h3>
+
+    <form onsubmit="return sendMsg()">
+        <input type="text" name="" id="name" placeholder="Ingrese nombre de usuario" />
+        <input type="text" name="" id="msg" placeholder="Mensaje" />
+        <input type="submit" value="Enviar">
+    </form>
+    <hr>
+    <div id="msgContainer">
+        <!-- <span><b>Autor:</b>Lorem ipsum dolor sit amet.</span><br>
+        <span><b>Autor:</b>Lorem ipsum dolor sit amet.</span><br>
+        <span><b>Autor:</b>Lorem ipsum dolor sit amet.</span><br>
+ -->
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
