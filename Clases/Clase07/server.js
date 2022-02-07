@@ -5,7 +5,11 @@ const PORT = 5522;
 
 const frase = "Hola mundo cómo están";
 
-const expresionRegular = /\s*;\s*/;
+const palabras = frase.split(' ')
+
+const letras = palabras.join('');
+
+//const expresionRegular = /\s*;\s*/;
 
 app.get("/api/frase", (req, res) => {
   res.send(`<h1>${frase}</h1>`);
@@ -14,7 +18,7 @@ app.get("/api/frase", (req, res) => {
 app.get("/api/letras/:num", (req, res) => {
   
     const num = parseInt(req.params.num)
-    const letras = frase.split(expresionRegular)
+    
 
 
     res.send(`<h1>${frase}</h1>`);
