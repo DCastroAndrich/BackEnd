@@ -1,4 +1,4 @@
-const {promises: fs} = require("fs");
+const { promises: fs } = require("fs");
 
 class ChatContainer {
   fileRoute;
@@ -23,7 +23,6 @@ class ChatContainer {
     try {
       const content = await fs.readFile(this.fileRoute, "utf-8");
       const arr = JSON.parse(content);
-      console.log(arr);
       return arr;
     } catch (error) {
       console.log(error);

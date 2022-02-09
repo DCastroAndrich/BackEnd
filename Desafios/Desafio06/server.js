@@ -6,6 +6,8 @@ const { Server: IOServer } = require("socket.io");
 const ChatContainer = require("./containers/ChatContainer.js");
 const ProductsContainer = require("./containers/ProductsContainer.js");
 
+
+
 /* INSTANCIACION */
 const app = express();
 const httpServer = new HttpServer(app);
@@ -19,9 +21,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-/* app.set('views', './views')
-app.set('view engine', 'ejs')
- */
 
 /* WEBSOCKET */
 io.on("connection", async socket => {
@@ -49,6 +48,7 @@ io.on("connection", async socket => {
     io.sockets.emit("messages", await apiMessages.getAll());
   });
 });
+
 
 /* SERVIDOR */
 const PORT = 8080;

@@ -14,7 +14,7 @@ class ProductsContainer {
   }
 
   save(product) {
-    const newProduct = { ...product, id: this.id++ };
+    const newProduct = { ...product, id: ++this.id };
     this.products.push(newProduct);
     return newProduct;
   }
