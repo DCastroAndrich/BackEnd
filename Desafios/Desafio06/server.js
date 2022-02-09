@@ -15,16 +15,16 @@ const apiProducts = new ProductsContainer();
 const apiMessages = new ChatContainer("messages.json");
 
 /* MIDDLEWARES */
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-app.set('views', './views')
+/* app.set('views', './views')
 app.set('view engine', 'ejs')
-
+ */
 
 /* WEBSOCKET */
-io.on("connection", (socket) => {
+io.on("connection", async socket => {
   console.log(`Nuevo cliente conectado ${socket.id}`);
   //------- Enviar histórico de productos
   socket.emit("products", apiProducts.listAll());
