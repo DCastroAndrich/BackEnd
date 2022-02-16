@@ -68,15 +68,16 @@ class ContainerCart {
   async saveToCart(id, id_prod) {
     const content = await this.getAll();
     const carts = content.find((cart) => cart.id == id);
-    
+
     const productsJSON = await fs.readFile("./products.json", "utf-8");
     const arr = JSON.parse(productsJSON);
-    
-    const items = arr.filter((item) => item.id == id_prod);
-    
-   
-    carts.products.push(items)
-    
+
+    const items = arr.find((item) => item.id == id_prod);
+
+    const itemsObj = { ...items };
+
+    carts.products.push(itemsObj);
+
     try {
       await fs.writeFile(this.fileroute, JSON.stringify(content, null, 2));
       return carts.products;
@@ -87,14 +88,14 @@ class ContainerCart {
 
   async eraseFromCart(id, id_prod) {
     const content = await this.getAll();
-    const cart = content.carts.find((cart) => cart.id == id);
-    const index = cart.products.findIndex((item) => item.id == id_prod);
-
-    cart.products.splice(index, 1);
+    const carts = content.find((cart) => cart.id == id);
+    const items = carts.products.find((item) => item.id == id_prod);
+    const index = carts["products"].indexOf(items)
+    carts["products"].splice(index, 1)
 
     try {
-      await fs.writeFile(this.fileroute, JSON.stringify(cart, null, 2));
-      return cart;
+      await fs.writeFile(this.fileroute, JSON.stringify(content, null, 2));
+      return carts.products;
     } catch (error) {
       throw new Error(`Error al borrar: ${error}`);
     }

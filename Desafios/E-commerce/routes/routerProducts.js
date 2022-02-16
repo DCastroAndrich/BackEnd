@@ -30,8 +30,15 @@ routerProducts.post("/", async (req, res) => {
 });
 
 routerProducts.put("/:id", async (req, res) => {
+  const product = {
+    name: req.body.name,
+    description: req.body.description,
+    thumbnail: req.body.thumbnail,
+    price: req.body.price,
+    stock: req.body.stock,
+  };
   if (admin === true) {
-    const response = await apiProducts.update(req.body, req.params.id);
+    const response = await apiProducts.update(product, req.params.id);
     res
       .status(200)
       .send({ msg: "Producto modificado exitosamente!", data: response });

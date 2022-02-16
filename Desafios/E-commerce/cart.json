@@ -1,46 +1,27 @@
 [
   {
     "id": 1,
-    "timestamp": "Tue Feb 15 2022 17:03:28 GMT-0300 (hora estándar de Argentina)",
-    "products": []
+    "timestamp": "Wed Feb 16 2022 11:08:33 GMT-0300 (hora estándar de Argentina)",
+    "products": [
+      {
+        "id": 2,
+        "timestamp": "13:47",
+        "name": "Lapicera Bic Azul",
+        "description": "Lapicera marca Bic, tinta color azul",
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png",
+        "price": 150,
+        "stock": 38
+      }
+    ]
   },
   {
     "id": 2,
-    "timestamp": "Tue Feb 15 2022 17:04:24 GMT-0300 (hora estándar de Argentina)",
-    "products": [
-      [
-        {
-          "id": 1,
-          "timestamp": "13:44",
-          "name": "Lapicera Bic Negra",
-          "description": "Lapicera marca Bic, tinta color negra",
-          "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png",
-          "price": 150,
-          "stock": 40
-        }
-      ],
-      [
-        {
-          "id": 1,
-          "timestamp": "13:44",
-          "name": "Lapicera Bic Negra",
-          "description": "Lapicera marca Bic, tinta color negra",
-          "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png",
-          "price": 150,
-          "stock": 40
-        }
-      ],
-      [
-        {
-          "id": 2,
-          "timestamp": "13:47",
-          "name": "Lapicera Bic Azul",
-          "description": "Lapicera marca Bic, tinta color azul",
-          "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png",
-          "price": 150,
-          "stock": 38
-        }
-      ]
-    ]
+    "timestamp": "Wed Feb 16 2022 11:08:34 GMT-0300 (hora estándar de Argentina)",
+    "products": []
+  },
+  {
+    "id": 3,
+    "timestamp": "Wed Feb 16 2022 11:08:35 GMT-0300 (hora estándar de Argentina)",
+    "products": []
   }
 ]

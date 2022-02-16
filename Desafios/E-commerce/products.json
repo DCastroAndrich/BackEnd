@@ -16,5 +16,32 @@
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png",
     "price": 150,
     "stock": 38
+  },
+  {
+    "id": 3,
+    "timestamp": "Wed Feb 16 2022 12:19:32 GMT-0300 (hora estándar de Argentina)",
+    "name": "Regla Pizzini chica",
+    "description": "Regla, marca Pizzini, tamaño chica, color verde",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+    "price": "200",
+    "stock": "10"
+  },
+  {
+    "id": 4,
+    "timestamp": "Wed Feb 16 2022 12:19:48 GMT-0300 (hora estándar de Argentina)",
+    "name": "Regla Pizzini grande",
+    "description": "Regla, marca Pizzini, tamaño grande, color verde",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+    "price": "350",
+    "stock": "10"
+  },
+  {
+    "id": 5,
+    "timestamp": "Wed Feb 16 2022 12:20:46 GMT-0300 (hora estándar de Argentina)",
+    "name": "Calculadora científica ",
+    "description": "Calculadora científica marca Sony",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+    "price": "1500",
+    "stock": "5"
   }
 ]
