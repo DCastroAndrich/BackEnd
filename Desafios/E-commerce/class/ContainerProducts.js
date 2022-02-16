@@ -1,6 +1,6 @@
 const { promises: fs } = require("fs");
 
-class ClassProducts {
+class ContainerProducts {
   fileroute;
   constructor(fileroute) {
     this.fileroute = fileroute;
@@ -38,7 +38,15 @@ class ClassProducts {
       newId = content[content.length - 1].id + 1;
     }
 
-    const newProduct = { ...product, id: newId };
+    const newProduct = {
+      id: newId,
+      timestamp: Date().toLocaleString(),
+      name: product.name,
+      description: product.description,
+      thumbnail: product.thumbnail,
+      price: product.price,
+      stock: product.stock,
+    };
     content.push(newProduct);
 
     try {
@@ -51,11 +59,12 @@ class ClassProducts {
 
   async update(product, id) {
     const content = await this.getAll();
+    const updatedProduct = { id: Number(id), ...product };
     let prods = content.find((item) => item.id == id);
     if (prods == -1) {
       throw new Error(`Error al modificar. Id ${id} no encontrado`);
     } else {
-      content[id] = product;
+      content[id] = updatedProduct;
       try {
         await fs.writeFile(this.fileroute, JSON.stringify(content, null, 2));
       } catch (error) {
@@ -74,4 +83,4 @@ class ClassProducts {
     }
   }
 }
-module.exports = ClassProducts;
+module.exports = ContainerProducts;

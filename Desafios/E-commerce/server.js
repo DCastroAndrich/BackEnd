@@ -10,19 +10,26 @@ const routerCart = require("./routes/routerCart");
 /* INSTANCIACION */
 const app = express();
 
-const admin = false;
 
 
 /* MIDDLEWARES */
 app.use(morgan("tiny"));
-routerProducts.use(express.json());
-routerCart.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+routerProducts.use(bodyParser.json());
+routerCart.use(bodyParser.json());
 
 /* RUTAS */
 
-app.use("api/productos", routerProducts);
-app.use("api/carrito", routerCart);
+app.use("/api/productos/", routerProducts);
+app.use("/api/carrito/", routerCart);
+
+app.get("/*", (req, res) => {
+  res
+    .status(400)
+    .json({
+      msg: "error : -2, descripcion: ruta 'x' método 'y' no implementada",
+    });
+});
 
 /* SERVIDOR */
 

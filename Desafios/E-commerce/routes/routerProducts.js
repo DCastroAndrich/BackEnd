@@ -1,35 +1,55 @@
 const express = require("express");
 const routerProducts = express.Router();
+const admin = true;
 
-const ProductsContainer = require("../class/ContainerProducts");
+const ContainerProducts = require("../class/ContainerProducts");
 
-const apiProducts = new ProductsContainer("../products.json")
+const apiProducts = new ContainerProducts("./products.json");
 
-routerProducts.get("/:id?", (req, res) => {
-  apiProducts.getById(req.params.id);
+routerProducts.get("/", async (req, res) => {
+  const response = await apiProducts.getAll();
+  res.send(response);
+});
+routerProducts.get("/:id", async (req, res) => {
+  const response = await apiProducts.getById(req.params.id);
+
+  res.status(200).send(response);
 });
 
-routerProducts.post("/", (req, res) => {
+routerProducts.post("/", async (req, res) => {
   if (admin === true) {
-    apiProducts.save(req.body);
+    const response = await apiProducts.save(req.body);
+    res
+      .status(200)
+      .send({ msg: "Producto agregado satisfactoriamente!", data: response });
   } else {
-    return { error: `error: -1, descripcion: ruta '/' método 'POST' no autorizada` };
+    res.status(400).json({
+      msg: "error: -1, descripcion: ruta '/' método 'POST' no autorizada",
+    });
   }
 });
 
-routerProducts.put("/:id", (req, res) => {
+routerProducts.put("/:id", async (req, res) => {
   if (admin === true) {
-    apiProducts.update(req.body, req.params.id);
+    const response = await apiProducts.update(req.body, req.params.id);
+    res
+      .status(200)
+      .send({ msg: "Producto modificado exitosamente!", data: response });
   } else {
-    return { error: `error: -1, descripcion: ruta '/:id' método 'PUT' no autorizada` };
+    res.status(400).json({
+      msg: "error: -1, descripcion: ruta '/:id' método 'PUT' no autorizada",
+    });
   }
 });
 
-routerProducts.delete("/:id", (req, res) => {
+routerProducts.delete("/:id", async (req, res) => {
   if (admin === true) {
-    apiProducts.deleteById(req.params.id);
+    const response = await apiProducts.deleteById(req.params.id);
+    res.status(200).send({ msg: "Producto eliminado", data: response });
   } else {
-    return { error: `error: -1, descripcion: ruta '/:id' método 'DELETE' no autorizada` };
+    res.status(400).json({
+      msg: "error: -1, descripcion: ruta '/:id' método 'DELETE' no autorizada",
+    });
   }
 });
 

@@ -1,22 +1,14 @@
 const { promises: fs } = require("fs");
 
-class ClassCart {
+class ContainerCart {
   fileroute;
   constructor(fileroute) {
     this.fileroute = fileroute;
-    this.cart = [];
-    this.id = 0;
-  }
-
-
-  async newCart(fileRoute){
-      const new_cart = Array.from(this.cart)
-      const new_id = ++this.id
   }
 
   async getAll() {
     try {
-      const content = await fs.readFile(this.fileroute, "utf8");
+      const content = await fs.readFile(this.fileroute, "utf-8");
       const arr = JSON.parse(content);
       return arr;
     } catch (error) {
@@ -25,19 +17,7 @@ class ClassCart {
     }
   }
 
-  async getById(id) {
-    try {
-      const content = await this.getAll();
-      let product = content.find((item) => item.id == id);
-
-      return product;
-    } catch (error) {
-      console.error(error);
-      return { error: `Producto no encontrado` };
-    }
-  }
-
-  async save(product) {
+  async newCart() {
     const content = await this.getAll();
     let newId;
     if (content.length === 0) {
@@ -46,8 +26,13 @@ class ClassCart {
       newId = content[content.length - 1].id + 1;
     }
 
-    const newProduct = { ...product, id: newId };
-    content.push(newProduct);
+    const newCart = {
+      id: newId,
+      timestamp: Date().toLocaleString(),
+      products: [],
+    };
+
+    content.push(newCart);
 
     try {
       await fs.writeFile(this.fileroute, JSON.stringify(content, null, 2));
@@ -57,38 +42,62 @@ class ClassCart {
     }
   }
 
-  async update(product, id) {
+  async eraseById(id) {
     const content = await this.getAll();
-    let prods = content.find((item) => item.id == id);
-    if (prods == -1) {
-      throw new Error(`Error al modificar. Id ${id} no encontrado`);
-    } else {
-      content[id] = product;
-      try {
-        await fs.writeFile(this.fileroute, JSON.stringify(content, null, 2));
-      } catch (error) {
-        throw new Error(`Error al modificar: ${error}`);
-      }
-    }
-  }
+    const cart = content.filter((cart) => cart.id != id);
 
-  async deleteById(id) {
-    const content = await this.getAll();
-    const prod = content.filter((item) => item.id != id);
     try {
-      await fs.writeFile(this.fileroute, JSON.stringify(prod, null, 2));
+      await fs.writeFile(this.fileroute, JSON.stringify(cart, null, 2));
     } catch (error) {
       throw new Error(`Error al borrar: ${error}`);
     }
   }
 
-  async deleteAll() {
-    const arr = [];
+  async listById(id) {
     try {
-      await fs.writeFile(this.fileroute, JSON.stringify(arr, null, 2));
+      const content = await this.getAll();
+      const carts = content.find((cart) => cart.id == id);
+
+      return carts.products;
+    } catch (error) {
+      console.error(error);
+      return { error: `Carrito no encontrado` };
+    }
+  }
+
+  async saveToCart(id, id_prod) {
+    const content = await this.getAll();
+    const carts = content.find((cart) => cart.id == id);
+    
+    const productsJSON = await fs.readFile("./products.json", "utf-8");
+    const arr = JSON.parse(productsJSON);
+    
+    const items = arr.filter((item) => item.id == id_prod);
+    
+   
+    carts.products.push(items)
+    
+    try {
+      await fs.writeFile(this.fileroute, JSON.stringify(content, null, 2));
+      return carts.products;
+    } catch (error) {
+      throw new Error(`Error al guardar: ${error}`);
+    }
+  }
+
+  async eraseFromCart(id, id_prod) {
+    const content = await this.getAll();
+    const cart = content.carts.find((cart) => cart.id == id);
+    const index = cart.products.findIndex((item) => item.id == id_prod);
+
+    cart.products.splice(index, 1);
+
+    try {
+      await fs.writeFile(this.fileroute, JSON.stringify(cart, null, 2));
+      return cart;
     } catch (error) {
       throw new Error(`Error al borrar: ${error}`);
     }
   }
 }
-module.exports = ClassCart;
+module.exports = ContainerCart;
