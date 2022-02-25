@@ -26,43 +26,31 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 /* WEBSOCKET */
-io.on(
-  "connection",
-  /* async */ (socket) => {
-    console.log(`Nuevo cliente conectado ${socket.id}`);
-    //------- Enviar histórico de productos
-    socket.emit(
-      "products",
-      /* apiProducts.createTableMDB() && */ apiProducts.listAll()
-    );
+io.on("connection", async (socket) => {
+  console.log(`Nuevo cliente conectado ${socket.id}`);
+  //------- Enviar histórico de productos
+  socket.emit("products", await apiProducts.listAll());
 
-    //------- Escuchar nuevos productos
-    socket.on("newProduct", (product) => {
-      apiProducts.save(product);
+  //------- Escuchar nuevos productos
+  socket.on("newProduct", async (product) => {
+    await apiProducts.save(product);
 
-      //Actualización de la vista de productos
-      io.sockets.emit("products", apiProducts.listAll());
-    });
+    //Actualización de la vista de productos
+    io.sockets.emit("products", await apiProducts.listAll());
+  });
 
-    //------- Enviar histórico de mensajes
-    socket.emit(
-      "messages",
-      /* await */ /* apiMessages.createTableSQL() && */ apiMessages.listAll()
-    );
+  //------- Enviar histórico de mensajes
+  socket.emit("messages", await apiMessages.listAll());
 
-    //------- Escuchar nuevos mensajes
-    socket.on(
-      "newMessage",
-      /* async */ (msg) => {
-        msg.date = new Date().toLocaleString();
-        /* await */ apiMessages.save(msg);
+  //------- Escuchar nuevos mensajes
+  socket.on("newMessage", async (msg) => {
+    msg.date = new Date().toLocaleString();
+    await apiMessages.save(msg);
 
-        //Actualización de la vista de mensajes
-        io.sockets.emit("messages", /* await */ apiMessages.listAll());
-      }
-    );
-  }
-);
+    //Actualización de la vista de mensajes
+    io.sockets.emit("messages", await apiMessages.listAll());
+  });
+});
 
 /* SERVIDOR */
 const PORT = 8080;
