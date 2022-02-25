@@ -26,7 +26,11 @@ socket.on("products", (products) => {
 });
 
 function htmlTable(products) {
+<<<<<<< HEAD
   return fetch("../table/productsTable.hbs")
+=======
+  return fetch("../hbs/productsTable.hbs")
+>>>>>>> 462950c61939d7b05ba4a9d963ae32ab8692ef90
     .then((res) => res.text())
     .then((table) => {
       const template = Handlebars.compile(table);
