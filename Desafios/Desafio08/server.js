@@ -33,7 +33,7 @@ io.on(
     //------- Enviar histórico de productos
     socket.emit(
       "products",
-      apiProducts.createTableMDB() && apiProducts.listAll()
+      /* apiProducts.createTableMDB() && */ apiProducts.listAll()
     );
 
     //------- Escuchar nuevos productos
@@ -47,7 +47,7 @@ io.on(
     //------- Enviar histórico de mensajes
     socket.emit(
       "messages",
-      /* await */ apiMessages.createTableSQL() && apiMessages.getAll()
+      /* await */ /* apiMessages.createTableSQL() && */ apiMessages.listAll()
     );
 
     //------- Escuchar nuevos mensajes
@@ -58,7 +58,7 @@ io.on(
         /* await */ apiMessages.save(msg);
 
         //Actualización de la vista de mensajes
-        io.sockets.emit("messages", /* await */ apiMessages.getAll());
+        io.sockets.emit("messages", /* await */ apiMessages.listAll());
       }
     );
   }
