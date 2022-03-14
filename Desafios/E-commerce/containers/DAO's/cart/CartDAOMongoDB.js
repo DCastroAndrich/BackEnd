@@ -5,7 +5,7 @@ class CartDAOMongoDB extends ContainerMongoDB {
         super("carts", {
             timestamp: {
                 type: Date,
-                default: Date.toLocaleString()
+                default: Date.now
             },
             products: {
                 type: Array

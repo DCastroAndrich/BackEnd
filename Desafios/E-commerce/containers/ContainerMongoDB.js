@@ -19,7 +19,7 @@ class ContainerMongoDB {
 
 
         } catch (error) {
-            this.console.error(error);
+            console.error(error);
         }
     }
 
@@ -32,18 +32,31 @@ class ContainerMongoDB {
             return doc
 
         } catch (error) {
-            this.console.error(error)
+            console.error(error)
         }
     }
+
+    async newCart(obj){
+        try {
+            const newCart = new this.collection(obj)
+            let doc = await newCart.save()
+            console.log(doc.id);
+            return doc.id
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     async save(obj) {
         try {
-            const newProd = new this.collection.schema(obj)
-            let doc = await newProd.save()
+            const newObj = new this.collection(obj)
+            let doc = await newObj.save()
             console.log(doc);
             return doc;
 
         } catch (error) {
-            this.console.error(error);
+            console.error(error);
         }
     }
 
@@ -59,7 +72,7 @@ class ContainerMongoDB {
             console.log(result);
             return result
         } catch (error) {
-            this.console.error(error);
+            console.error(error);
         }
 
     }
@@ -73,7 +86,7 @@ class ContainerMongoDB {
             console.log(result);
             return result
         } catch (error) {
-            this.console.error(error);
+            console.error(error);
         }
     }
 

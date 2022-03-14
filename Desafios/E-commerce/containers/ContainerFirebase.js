@@ -5,11 +5,15 @@ const serviceAccount = config.firebase.route;
 
 try {
     admin.initializeApp({
-        credential: admin.credential.cert(JSON.parse(serviceAccount))
-        
+        credential: admin.credential.cert(serviceAccount)
+
     })
 } catch (error) {
     console.error(error);
+
+} finally {
+    const db = admin.firestore()
+    const query = db.collection(this.collection)
 
 }
 
@@ -18,9 +22,8 @@ try {
 class ContainerFirebase {
     constructor(collectionName) {
         this.collection = collectionName
-        const db = admin.firestore()
-        const query = db.collection(this.collection)
     }
+    async initializeApp()
 
     async getAll() {
         try {

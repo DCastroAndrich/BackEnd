@@ -4,10 +4,13 @@ const routerProducts = express.Router();
 const admin = true;
 
 //import ProductDAOMongoDB from "../containers/DAO's/product/ProductDAOMongoDB.js";
-import ProductDAOFirebase from "../containers/DAO's/product/ProductDAOFirebase.js"
-//import ProductDAOFs from "../containers/DAO's/product/ProductDAOFs.js"
+//import ProductDAOFirebase from "../containers/DAO's/product/ProductDAOFirebase.js"
+import ProductDAOFs from "../containers/DAO's/product/ProductDAOFs.js"
 
-const apiProducts = new ProductDAOFirebase()
+//const apiProducts = new ProductDAOMongoDB()
+//const apiProducts = new ProductDAOFirebase()
+const apiProducts = new ProductDAOFs()
+
 
 routerProducts.get("/", async (req, res) => {
   const response = await apiProducts.getAll();

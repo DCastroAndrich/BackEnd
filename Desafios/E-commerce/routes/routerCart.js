@@ -7,6 +7,8 @@ import CartDAOMongoDB from "../containers/DAO's/cart/CartDAOMongoDB.js"
 //import CartDAOFirebase from "../containers/DAO's/cart/CartDAOFirebase.js"
 
 const apiCart = new CartDAOMongoDB()
+//const apiCart = new CartDAOFirebase()
+//const apiCart = new CartDAOFs()
 
 routerCart.get("/", async (req, res) => {
   const response = await apiCart.getAll();
