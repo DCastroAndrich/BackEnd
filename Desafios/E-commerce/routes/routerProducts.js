@@ -1,10 +1,13 @@
-const express = require("express");
+import express from "express"
+//const express = require("express");
 const routerProducts = express.Router();
 const admin = true;
 
-const ContainerProducts = require("../class/ContainerProducts");
+//import ProductDAOMongoDB from "../containers/DAO's/product/ProductDAOMongoDB.js";
+import ProductDAOFirebase from "../containers/DAO's/product/ProductDAOFirebase.js"
+//import ProductDAOFs from "../containers/DAO's/product/ProductDAOFs.js"
 
-const apiProducts = new ContainerProducts("./products.json");
+const apiProducts = new ProductDAOFirebase()
 
 routerProducts.get("/", async (req, res) => {
   const response = await apiProducts.getAll();
@@ -60,4 +63,4 @@ routerProducts.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = routerProducts;
+export default routerProducts;

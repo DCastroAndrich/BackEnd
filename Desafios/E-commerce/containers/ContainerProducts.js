@@ -1,4 +1,6 @@
-const { promises: fs } = require("fs");
+import {promises as fs} from "fs"
+
+//const { promises: fs } = require("fs");
 
 class ContainerProducts {
   fileroute;

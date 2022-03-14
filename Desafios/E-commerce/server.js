@@ -1,11 +1,16 @@
 /* MODULOS */
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
+import express from "express"
+import bodyParser from "body-parser"
+import morgan from "morgan"
+//const express = require("express");
+//const bodyParser = require("body-parser");
+//const morgan = require("morgan");
 
-const routerProducts = require("./routes/routerProducts");
-const routerCart = require("./routes/routerCart");
+import routerProducts from "./routes/routerProducts.js";
+import routerCart from "./routes/routerCart.js"
+//const routerProducts = require("./routes/routerProducts");
+//const routerCart = require("./routes/routerCart");
 
 /* INSTANCIACION */
 const app = express();

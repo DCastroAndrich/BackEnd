@@ -1,9 +1,12 @@
-const express = require("express");
+import express from "express"
+//const express = require("express");
 const routerCart = express.Router();
 
-const ContainerCart = require("../class/ContainerCart");
+import CartDAOMongoDB from "../containers/DAO's/cart/CartDAOMongoDB.js"
+//import CartDAOFs from "../containers/DAO's/cart/CartDAOFs.js"
+//import CartDAOFirebase from "../containers/DAO's/cart/CartDAOFirebase.js"
 
-const apiCart = new ContainerCart("./cart.json");
+const apiCart = new CartDAOMongoDB()
 
 routerCart.get("/", async (req, res) => {
   const response = await apiCart.getAll();
@@ -36,4 +39,4 @@ routerCart.delete("/:id/productos/:id_prod", async (req, res) => {
     .send({ msg: "Producto eliminado del carrito", data: response });
 });
 
-module.exports = routerCart;
+export default routerCart;
