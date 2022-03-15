@@ -36,13 +36,13 @@ class ContainerMongoDB {
         }
     }
 
-    async newCart(obj){
+    async newCart(obj) {
         try {
             const newCart = new this.collection(obj)
             let doc = await newCart.save()
             console.log(doc.id);
             return doc.id
-            
+
         } catch (error) {
             console.error(error);
         }
@@ -75,6 +75,39 @@ class ContainerMongoDB {
             console.error(error);
         }
 
+    }
+
+    async saveToCart(id, id_prod) {
+
+        try {
+            let findProduct = await products.find({
+                _id: id_prod
+            })
+            let result = await this.collection.findByIdAndUpdate(id, {
+                $set: {
+                    ...findProduct
+                }
+            })
+
+            console.log(result);
+            return result
+
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async eraseFromCart(id) {
+        try {
+            let result = await this.collection.deleteOne({
+                _id: id
+            })
+            console.log(result);
+            return result
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     async deleteById(id) {
