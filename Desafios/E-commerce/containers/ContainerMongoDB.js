@@ -36,9 +36,9 @@ class ContainerMongoDB {
         }
     }
 
-    async newCart(obj) {
+    async newCart() {
         try {
-            const newCart = new this.collection(obj)
+            const newCart = new this.collection()
             let doc = await newCart.save()
             console.log(doc.id);
             return doc.id

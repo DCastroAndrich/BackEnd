@@ -2,12 +2,12 @@ import express from "express"
 //const express = require("express");
 const routerCart = express.Router();
 
-import CartDAOMongoDB from "../containers/DAO's/cart/CartDAOMongoDB.js"
+//import CartDAOMongoDB from "../containers/DAO's/cart/CartDAOMongoDB.js"
 //import CartDAOFs from "../containers/DAO's/cart/CartDAOFs.js"
-//import CartDAOFirebase from "../containers/DAO's/cart/CartDAOFirebase.js"
+import CartDAOFirebase from "../containers/DAO's/cart/CartDAOFirebase.js"
 
-const apiCart = new CartDAOMongoDB()
-//const apiCart = new CartDAOFirebase()
+//const apiCart = new CartDAOMongoDB()
+const apiCart = new CartDAOFirebase()
 //const apiCart = new CartDAOFs()
 
 routerCart.get("/", async (req, res) => {
