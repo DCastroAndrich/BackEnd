@@ -1,9 +1,9 @@
 import ContainerFirebase from "../../ContainerFirebase.js";
 
 class CartDAOFirebase extends ContainerFirebase {
-    constructor() {
-        super("carts")
-    }
+  constructor() {
+    super("carts");
+  }
 }
 
-export default CartDAOFirebase
+export default CartDAOFirebase;

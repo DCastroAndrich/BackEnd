@@ -38,7 +38,7 @@ class ContainerFS {
       newId = content[content.length - 1].id + 1;
     }
 
-    const newObj = {id: newId, ...obj};
+    const newObj = { id: newId, ...obj };
     content.push(newObj);
 
     try {

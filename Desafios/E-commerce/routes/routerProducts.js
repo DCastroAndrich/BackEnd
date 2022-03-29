@@ -1,16 +1,11 @@
-import express from "express"
-//const express = require("express");
+import express from "express";
 const routerProducts = express.Router();
 const admin = true;
 
-//import ProductDAOMongoDB from "../containers/DAO's/product/ProductDAOMongoDB.js";
-import ProductDAOFirebase from "../containers/DAO's/product/ProductDAOFirebase.js"
-//import ProductDAOFs from "../containers/DAO's/product/ProductDAOFs.js"
 
-//const apiProducts = new ProductDAOMongoDB()
-const apiProducts = new ProductDAOFirebase()
-//const apiProducts = new ProductDAOFs()
+import { DAOProducts } from "../containers/DAO's/imports.js";
 
+const apiProducts = new DAOProducts();
 
 routerProducts.get("/", async (req, res) => {
   const response = await apiProducts.getAll();

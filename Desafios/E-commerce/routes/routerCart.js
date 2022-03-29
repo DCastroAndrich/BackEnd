@@ -1,14 +1,9 @@
-import express from "express"
-//const express = require("express");
+import express from "express";
 const routerCart = express.Router();
 
-//import CartDAOMongoDB from "../containers/DAO's/cart/CartDAOMongoDB.js"
-//import CartDAOFs from "../containers/DAO's/cart/CartDAOFs.js"
-import CartDAOFirebase from "../containers/DAO's/cart/CartDAOFirebase.js"
+import { DAOCarts } from "../containers/DAO's/imports.js";
 
-//const apiCart = new CartDAOMongoDB()
-const apiCart = new CartDAOFirebase()
-//const apiCart = new CartDAOFs()
+const apiCart = new DAOCarts();
 
 routerCart.get("/", async (req, res) => {
   const response = await apiCart.getAll();
@@ -35,7 +30,10 @@ routerCart.post("/:id/productos/:id_prod", async (req, res) => {
 });
 
 routerCart.delete("/:id/productos/:id_prod", async (req, res) => {
-  const response = await apiCart.eraseFromCart(req.params.id, req.params.id_prod);
+  const response = await apiCart.eraseFromCart(
+    req.params.id,
+    req.params.id_prod
+  );
   res
     .status(200)
     .send({ msg: "Producto eliminado del carrito", data: response });

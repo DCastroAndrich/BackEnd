@@ -7,9 +7,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-/* const db = admin.firestore();
-const query = db.collection(this.collection);
- */
 class ContainerFirebase {
   constructor(collectionName) {
     this.collection = collectionName;
@@ -82,11 +79,13 @@ class ContainerFirebase {
       const queryProduct = db.collection("products");
       const prods = queryProduct.doc(`${id_prod}`);
       const item = await prods.get();
-      const prod = item.data()
+      const prod = item.data();
 
       const query = db.collection(this.collection);
       const doc = query.doc(`${id}`);
-      await doc.update({ products: {...prod} });
+      await doc.update({
+        products: admin.firestore.FieldValue.arrayUnion({ ...prod }),
+      });
       console.log("Producto agregado", item);
     } catch (error) {
       console.error(error);
