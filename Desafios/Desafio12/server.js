@@ -4,15 +4,18 @@ import express from "express";
 import session from "express-session";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import path from "path";
 import mongo from "connect-mongo";
-import config from "./config";
+import config from "./config.js";
 
 import wsProducts from "./routers/websocket/wsProducts.js";
 import wsMessages from "./routers/websocket/wsMessages.js";
 
 import { Server as HttpServer } from "http";
 import { Server as IOServer } from "socket.io";
+
+import homeRouter from "./routers/web/homeRouter.js";
+import authRouter from "./routers/web/authRouter.js";
+import fakerRouter from "./routers/fakerJS/fakerRouter.js";
 
 /* INSTANCIACION */
 
@@ -53,6 +56,14 @@ io.on("connection", async (socket) => {
   wsProducts(socket, io.sockets);
   wsMessages(socket, io.sockets);
 });
+
+/* ROUTES */
+//-----Ruta a los productos de Faker.js
+app.use(fakerRouter);
+
+//-----Ruta a las vistas del servidor
+app.use(authRouter);
+app.use(homeRouter);
 
 /* SERVIDOR */
 const server = httpServer.listen(config.PORT, () => {

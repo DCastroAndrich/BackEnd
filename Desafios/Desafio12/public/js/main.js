@@ -59,6 +59,7 @@ socket.on("messages", (messages) => {
   document.getElementById("chatContainer").innerHTML = conMsdgHtml;
 });
 
+
 userName.addEventListener("input", () => {
   const verifyEmail = userName.value.length;
   const verifyText = textMsg.value.length;

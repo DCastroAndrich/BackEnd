@@ -1,3 +1,5 @@
+import path from "path";
+
 export default {
   PORT: process.env.PORT || 8282,
   mongo: {
@@ -15,7 +17,7 @@ export default {
   },
   SQLite: {
     client: "better-sqlite3",
-    connection: { filename: `./DB/ecommerce.db3` },
+    connection: { filename: path.join(process.cwd(), "/DB/ecommerce.db3") },
     useNullAsDefault: true,
   },
 };

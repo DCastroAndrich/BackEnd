@@ -1,6 +1,7 @@
-import { knex as knexLib } from "knex";
+import pkg from "knex";
+const {knex: knexLib} = pkg
 
-class Container {
+class ContainerSQL {
   constructor(options, tableName) {
     (this.knex = knexLib(options)), (this.tableName = tableName);
   }
