@@ -38,7 +38,7 @@ passport.use(
       clientID: config.facebookApp.FACEBOOK_APP_ID,
       clientSecret: config.facebookApp.FACEBOOK_APP_SECRET,
       callbackURL: "http://localhost:8282/auth/facebook/callback",
-      profileFields: ["id", "displayName", "photos", "email"],
+      profileFields: ["id", "displayName", "photos"],
     },
     function (accessToken, refreshToken, profile, done) {
       console.log("accessToken", accessToken);
