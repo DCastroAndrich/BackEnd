@@ -1,0 +1,38 @@
+<div class="container bg-dark bg-opacity-75 bg-gradient rounded my-5 py-2">
+    <h1>Chat</h1>
+    <br />
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">@</span>
+      <input
+        type="email"
+        name="userName"
+        id="userName"
+        placeholder="Ingrese su Email"
+        class="form-control"
+      />
+    </div>
+    <hr />
+
+    <div id="chatContainer"></div>
+
+    <form onsubmit="return sendMsg()" class="form-inline">
+      <div class="form-group mb-3">
+        <input
+          disabled
+          type="text"
+          name="textMsg"
+          id="textMsg"
+          class="form-control"
+          placeholder="Ingrese su mensaje"
+        />
+        <button
+          disabled
+          id="btnSend"
+          type="submit"
+          class="btn btn-primary mt-3"
+        >
+          Enviar mensaje
+        </button>
+      </div>
+    </form>
+  </div>
