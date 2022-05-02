@@ -1,0 +1,359 @@
+Statistical profiling result from forkWithconsole-v8.log, (2097 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   1637   78.1%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    451   21.5%          C:\Program Files\nodejs\node.exe
+      1    0.0%          C:\WINDOWS\System32\KERNELBASE.dll
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      2    0.1%   25.0%  LazyCompile: *writeOrBuffer node:internal/streams/writable:365:23
+      2    0.1%   25.0%  LazyCompile: *resolve node:path:158:10
+      1    0.0%   12.5%  Function: ^tryCreateBuffer node:fs:414:25
+      1    0.0%   12.5%  Function: ^send C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\response.js:107:25
+      1    0.0%   12.5%  Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1    0.0%   12.5%  Function: ^<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\appenders\console.js:5:10
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      8    0.4%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+     11    0.5%  137.5%  GC
+   2089   99.6%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   1637   78.1%  C:\WINDOWS\SYSTEM32\ntdll.dll
+     32    2.0%    C:\Program Files\nodejs\node.exe
+      8   25.0%      LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-R7YSXE5N.mjs:1:16710
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-R7YSXE5N.mjs:1:78500
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-PFEEQGT6.mjs:1:5935
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            Script: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/index.mjs:1:1
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-J4B7GUYI.mjs:1:28315
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            Script: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/index.mjs:1:1
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-DBOUC756.mjs:1:29407
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-DBOUC756.mjs:1:29601
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-73M2I5K6.mjs:1:53237
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-73M2I5K6.mjs:1:53563
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-6PM642JR.mjs:1:1995
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-6PM642JR.mjs:1:5330
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:453444
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            Script: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/index.mjs:1:1
+      1   12.5%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3BNGWZUP.mjs:1:27995
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3BNGWZUP.mjs:1:54998
+      1    3.1%      LazyCompile: ~resume_ node:internal/streams/readable:984:17
+      1  100.0%        LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    3.1%      LazyCompile: ~removeAt node:internal/priority_queue:93:11
+      1  100.0%        LazyCompile: ~shift node:internal/priority_queue:107:8
+      1  100.0%          LazyCompile: ~listOnTimeout node:internal/timers:507:25
+      1  100.0%            LazyCompile: ~processTimers node:internal/timers:487:25
+      1    3.1%      LazyCompile: ~readFile node:internal/fs/promises:786:24
+      1  100.0%        LazyCompile: ~defaultGetSource node:internal/modules/esm/get_source:25:32
+      1  100.0%          Function: ^defaultLoad node:internal/modules/esm/load:13:27
+      1  100.0%            Function: ^load node:internal/modules/esm/loader:353:13
+      1    3.1%      LazyCompile: ~processIncomingData C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\message_stream.js:79:29
+      1  100.0%        LazyCompile: ~_write C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\message_stream.js:26:11
+      1  100.0%          LazyCompile: ~writeOrBuffer node:internal/streams/writable:365:23
+      1  100.0%            LazyCompile: ~_write node:internal/streams/writable:283:16
+      1    3.1%      LazyCompile: ~module.exports.evaluate C:\Damian\BackEnd\Desafios\Desafio15\node_modules\node-pre-gyp\lib\util\versioning.js:277:35
+      1  100.0%        LazyCompile: ~exports.find C:\Damian\BackEnd\Desafios\Desafio15\node_modules\node-pre-gyp\lib\pre-binding.js:16:24
+      1  100.0%          Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\@vscode\sqlite3\lib\sqlite3-binding.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1    3.1%      LazyCompile: ~module.exports C:\Damian\BackEnd\Desafios\Desafio15\node_modules\gauge\theme-set.js:4:27
+      1  100.0%        Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\gauge\themes.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1    3.1%      LazyCompile: ~legacyMainResolve node:internal/modules/esm/resolve:299:27
+      1  100.0%        LazyCompile: ~packageResolve node:internal/modules/esm/resolve:875:24
+      1  100.0%          LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:966:23
+      1  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1039:24
+      1    3.1%      LazyCompile: ~isURLInstance node:internal/url:1492:23
+      1  100.0%        LazyCompile: ~fileURLToPath node:internal/url:1413:23
+      1  100.0%          LazyCompile: ~getPackageScopeConfig node:internal/modules/esm/resolve:248:31
+      1  100.0%            LazyCompile: ~packageResolve node:internal/modules/esm/resolve:875:24
+      1    3.1%      LazyCompile: ~getcookie C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express-session\index.js:529:19
+      1  100.0%        Function: ^session C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express-session\index.js:179:26
+      1  100.0%          Function: ^handle C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\router\layer.js:86:49
+      1  100.0%            Function: ^trim_prefix C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\router\index.js:288:23
+      1    3.1%      LazyCompile: ~get data C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express-session\session\cookie.js:117:11
+      1  100.0%        LazyCompile: ~toJSON C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express-session\session\cookie.js:147:19
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~hash C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express-session\index.js:596:14
+      1    3.1%      LazyCompile: ~append C:\Damian\BackEnd\Desafios\Desafio15\node_modules\vary\index.js:38:17
+      1  100.0%        LazyCompile: ~vary C:\Damian\BackEnd\Desafios\Desafio15\node_modules\vary\index.js:133:15
+      1  100.0%          LazyCompile: ~onResponseHeaders C:\Damian\BackEnd\Desafios\Desafio15\node_modules\compression\index.js:140:47
+      1  100.0%            Function: ^writeHead C:\Damian\BackEnd\Desafios\Desafio15\node_modules\on-headers\index.js:28:29
+      1    3.1%      LazyCompile: ~URLImpl C:\Damian\BackEnd\Desafios\Desafio15\node_modules\whatwg-url\lib\URL-impl.js:7:14
+      1  100.0%        LazyCompile: ~exports.setup C:\Damian\BackEnd\Desafios\Desafio15\node_modules\whatwg-url\lib\URL.js:49:17
+      1  100.0%          LazyCompile: ~URL C:\Damian\BackEnd\Desafios\Desafio15\node_modules\whatwg-url\lib\URL.js:90:16
+      1  100.0%            LazyCompile: ~URLWithoutHost C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb-connection-string-url\lib\index.js:74:1
+      1    3.1%      LazyCompile: ~TLSSocket._wrapHandle node:_tls_wrap:594:43
+      1  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:462:19
+      1  100.0%          LazyCompile: ~connect node:_tls_wrap:1597:35
+      1  100.0%            LazyCompile: ~makeConnection C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\connect.js:241:24
+      1    3.1%      LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            LazyCompile: ~Module.require node:internal/modules/cjs/loader:997:36
+      1    3.1%      LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\streamroller\lib\fileNameFormatter.js:35:7
+      1  100.0%        C:\Program Files\nodejs\node.exe
+      1  100.0%          LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\streamroller\lib\fileNameFormatter.js:32:10
+      1  100.0%            LazyCompile: ~RollingFileWriteStream C:\Damian\BackEnd\Desafios\Desafio15\node_modules\streamroller\lib\RollingFileWriteStream.js:38:14
+      1    3.1%      LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\connection_pool.js:364:44
+      1  100.0%        LazyCompile: ~callback C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\connect.js:63:31
+      1  100.0%          LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\connect.js:128:44
+      1  100.0%            LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\cmap\auth\scram.js:152:83
+      1    3.1%      LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\clustering.js:24:21
+      1  100.0%        C:\Program Files\nodejs\node.exe
+      1  100.0%          LazyCompile: ~sendToListeners C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\clustering.js:23:25
+      1  100.0%            LazyCompile: ~send C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\clustering.js:88:9
+      1    3.1%      Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\socket.io-parser\node_modules\debug\src\node.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    3.1%      Function: ^realpathSync node:fs:2412:22
+      1  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1    3.1%      Function: ^handleErrorFromBinding node:internal/fs/utils:340:32
+      1  100.0%        Function: ^openSync node:fs:576:18
+      1  100.0%          Function: ^readFileSync node:fs:450:22
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1    3.1%      Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      1  100.0%        Function: ^syncExports node:internal/bootstrap/loaders:287:14
+      1  100.0%          Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      1  100.0%            Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1    3.1%      Function: ^fileURLToPath node:internal/url:1413:23
+      1  100.0%        Function: ^toPathIfFileURL node:internal/url:1496:25
+      1  100.0%          Function: ^<anonymous> node:internal/fs/utils:680:42
+      1  100.0%            Function: ^statSync node:fs:1530:18
+      1    3.1%      Function: ^compile C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:379:35
+      1  100.0%        Function: ^handleCache C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:208:21
+      1  100.0%          Function: ^tryHandleCache C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:252:24
+      1  100.0%            Function: ^exports.renderFile C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:439:31
+      1    3.1%      Function: ^Writable.write node:internal/streams/writable:333:36
+      1  100.0%        Function: ^_writeRaw node:_http_outgoing:344:19
+      1  100.0%          Function: ^_send node:_http_outgoing:319:49
+      1  100.0%            Function: ^write_ node:_http_outgoing:730:16
+     31    1.9%    LazyCompile: *writeOrBuffer node:internal/streams/writable:365:23
+     23   74.2%      LazyCompile: *_write node:internal/streams/writable:283:16
+     23  100.0%        Function: ^Writable.write node:internal/streams/writable:333:36
+     23  100.0%          Function: ^value node:internal/console/constructor:258:20
+     23  100.0%            Function: ^log node:internal/console/constructor:359:6
+      8   25.8%      Function: ^_write node:internal/streams/writable:283:16
+      8  100.0%        Function: ^Writable.write node:internal/streams/writable:333:36
+      8  100.0%          Function: ^value node:internal/console/constructor:258:20
+      8  100.0%            Function: ^log node:internal/console/constructor:359:6
+
+    451   21.5%  C:\Program Files\nodejs\node.exe
+    353   78.3%    C:\Program Files\nodejs\node.exe
+     65   18.4%      Function: ^handleWriteReq node:internal/stream_base_commons:45:24
+     65  100.0%        Function: ^writeGeneric node:internal/stream_base_commons:147:22
+     65  100.0%          Function: ^Socket._writeGeneric node:net:769:42
+     65  100.0%            Function: ^Socket._write node:net:806:35
+     56   15.9%      Function: ^compileFunction node:vm:308:25
+     55   98.2%        Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+     55  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+     53   96.4%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      2    3.6%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1    1.8%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1057:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1112:37
+     29    8.2%      Function: ^moduleStrategy node:internal/modules/esm/translators:110:56
+     29  100.0%        Function: ^moduleProvider node:internal/modules/esm/loader:279:28
+     29  100.0%          C:\Program Files\nodejs\node.exe
+     21    5.9%      Function: ^realpathSync node:fs:2412:22
+     19   90.5%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+     16   84.2%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+     10   62.5%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      6   37.5%            Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      3   15.8%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      3  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2    9.5%        Function: ^finalizeResolution node:internal/modules/esm/resolve:391:28
+      2  100.0%          Function: ^moduleResolve node:internal/modules/esm/resolve:966:23
+      2  100.0%            Function: ^defaultResolve node:internal/modules/esm/resolve:1039:24
+     18    5.1%      LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      3   16.7%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:304961
+      3  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      3  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:453444
+      2   11.1%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-X7TJENQ2.mjs:1:37300
+      2  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      2  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-X7TJENQ2.mjs:1:37604
+      2   11.1%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-KPV7APGC.mjs:1:31474
+      2  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      2  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-KPV7APGC.mjs:1:97266
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-YXED46IS.mjs:1:982
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-YXED46IS.mjs:1:15443
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-SA3HBHIK.mjs:1:21982
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-SA3HBHIK.mjs:1:63370
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-PFEEQGT6.mjs:1:5656
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-PFEEQGT6.mjs:1:5935
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-P7WOJ7NK.mjs:1:7870
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-P7WOJ7NK.mjs:1:8168
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FC3AHOQC.mjs:1:51134
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            Script: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/index.mjs:1:1
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-CISLDNY7.mjs:1:33804
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-CISLDNY7.mjs:1:85615
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-B4H4ZFLQ.mjs:1:175225
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-B4H4ZFLQ.mjs:1:228081
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-6RYOR2XF.mjs:1:14961
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-6RYOR2XF.mjs:1:15010
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:453291
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:453444
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:197156
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-3TSE3FHA.mjs:14:453444
+      1    5.6%        LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-2SPXLITL.mjs:1:3115
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/chunk-FM3PKIKM.mjs:1:195
+      1  100.0%            Script: ~<anonymous> file:///C:/Damian/BackEnd/Desafios/Desafio15/node_modules/@faker-js/faker/dist/esm/index.mjs:1:1
+     18    5.1%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      9   50.0%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      9  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      9  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      8   44.4%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      7   87.5%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      7  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   12.5%          Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    5.6%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+     10    2.8%      C:\Program Files\nodejs\node.exe
+      1   10.0%        LazyCompile: ~module.exports C:\Damian\BackEnd\Desafios\Desafio15\node_modules\aproba\index.js:24:42
+      1  100.0%          LazyCompile: ~module.exports C:\Damian\BackEnd\Desafios\Desafio15\node_modules\gauge\plumbing.js:6:42
+      1  100.0%            LazyCompile: ~Gauge C:\Damian\BackEnd\Desafios\Desafio15\node_modules\gauge\index.js:19:16
+      1   10.0%        LazyCompile: ~checkServer C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\sdam\monitor.js:139:21
+      1  100.0%          LazyCompile: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\sdam\monitor.js:222:12
+      1  100.0%            LazyCompile: ~executeAndReschedule C:\Damian\BackEnd\Desafios\Desafio15\node_modules\mongodb\lib\utils.js:701:34
+      1   10.0%        LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%          LazyCompile: ~Socket node:net:283:16
+      1  100.0%            LazyCompile: ~WriteStream node:tty:85:21
+      1   10.0%        LazyCompile: *scanLine C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:803:22
+      1  100.0%          LazyCompile: *<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:730:32
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      1   10.0%        LazyCompile: *formatProperty node:internal/util/inspect:1810:24
+      1  100.0%          Function: ^formatArray node:internal/util/inspect:1634:21
+      1  100.0%            Function: ^formatRaw node:internal/util/inspect:820:19
+      1   10.0%        Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\iconv-lite\lib\streams.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1   10.0%        Function: ^vary C:\Damian\BackEnd\Desafios\Desafio15\node_modules\vary\index.js:133:15
+      1  100.0%          Function: ^onResponseHeaders C:\Damian\BackEnd\Desafios\Desafio15\node_modules\compression\index.js:140:47
+      1  100.0%            Function: ^writeHead C:\Damian\BackEnd\Desafios\Desafio15\node_modules\on-headers\index.js:28:29
+      1   10.0%        Function: ^pipe C:\Damian\BackEnd\Desafios\Desafio15\node_modules\send\index.js:510:43
+      1  100.0%          Function: ^serveStatic C:\Damian\BackEnd\Desafios\Desafio15\node_modules\serve-static\index.js:72:31
+      1  100.0%            LazyCompile: *trim_prefix C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\router\index.js:288:23
+      1   10.0%        Function: ^exports.escapeRegExpChars C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\utils.js:39:38
+      1  100.0%          Function: ^createRegex C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:558:25
+      1  100.0%            Function: ^Template C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:507:18
+      1   10.0%        Function: ^Module node:internal/modules/cjs/loader:172:16
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      8    2.3%      Function: ^statSync node:fs:1530:18
+      7   87.5%        Function: ^tryStat C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\view.js:174:17
+      7  100.0%          Function: ^resolve C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\view.js:146:42
+      7  100.0%            Function: ^lookup C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\view.js:104:40
+      1   12.5%        Function: ^tryStatSync node:internal/modules/esm/resolve:184:3
+      1  100.0%          Function: ^finalizeResolution node:internal/modules/esm/resolve:391:28
+      1  100.0%            Function: ^moduleResolve node:internal/modules/esm/resolve:966:23
+      7    2.0%      Function: ^readSync node:fs:684:18
+      7  100.0%        Function: ^tryReadSync node:fs:429:21
+      7  100.0%          Function: ^readFileSync node:fs:450:22
+      6   85.7%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1   14.3%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      7    2.0%      Function: ^isatty node:tty:42:16
+      3   42.9%        LazyCompile: ~useColors C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\node_modules\debug\src\node.js:155:19
+      3  100.0%          LazyCompile: ~createDebug C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\node_modules\debug\src\common.js:60:22
+      1   33.3%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\categories.js:1:1
+      1   33.3%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\appenders\index.js:1:1
+      1   33.3%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\log4js\lib\appenders\file.js:1:1
+      1   14.3%        LazyCompile: ~useColors C:\Damian\BackEnd\Desafios\Desafio15\node_modules\socket.io\node_modules\debug\src\node.js:155:19
+      1  100.0%          LazyCompile: ~createDebug C:\Damian\BackEnd\Desafios\Desafio15\node_modules\socket.io\node_modules\debug\src\common.js:60:22
+      1  100.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\socket.io\dist\socket.js:1:1
+      1   14.3%        LazyCompile: ~useColors C:\Damian\BackEnd\Desafios\Desafio15\node_modules\knex\node_modules\debug\src\node.js:155:19
+      1  100.0%          LazyCompile: ~createDebug C:\Damian\BackEnd\Desafios\Desafio15\node_modules\knex\node_modules\debug\src\common.js:60:22
+      1  100.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\knex\lib\raw.js:1:1
+      1   14.3%        LazyCompile: ~useColors C:\Damian\BackEnd\Desafios\Desafio15\node_modules\debug\src\node.js:75:19
+      1  100.0%          LazyCompile: ~createDebug C:\Damian\BackEnd\Desafios\Desafio15\node_modules\debug\src\debug.js:63:21
+      1  100.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express-session\index.js:1:1
+      1   14.3%        LazyCompile: ~useColors C:\Damian\BackEnd\Desafios\Desafio15\node_modules\connect-mongo\node_modules\debug\src\node.js:155:19
+      1  100.0%          LazyCompile: ~createDebug C:\Damian\BackEnd\Desafios\Desafio15\node_modules\connect-mongo\node_modules\debug\src\common.js:60:22
+      1  100.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\connect-mongo\build\main\lib\MongoStore.js:1:1
+      7    2.0%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      5   71.4%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   20.0%          Function: ~<anonymous> node:internal/modules/esm/load:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   20.0%          Function: ~<anonymous> node:internal/crypto/util:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   20.0%          Function: ~<anonymous> node:http:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   20.0%          Function: ~<anonymous> node:crypto:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   20.0%          Function: ~<anonymous> node:child_process:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2   28.6%        Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      2  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      2  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      4    1.1%      LazyCompile: ~isatty node:tty:42:16
+      4  100.0%        LazyCompile: ~useColors C:\Damian\BackEnd\Desafios\Desafio15\node_modules\debug\src\node.js:75:19
+      4  100.0%          LazyCompile: ~createDebug C:\Damian\BackEnd\Desafios\Desafio15\node_modules\debug\src\debug.js:63:21
+      1   25.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\node_modules\body-parser\lib\types\raw.js:1:1
+      1   25.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\node_modules\body-parser\lib\types\json.js:1:1
+      1   25.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\router\route.js:1:1
+      1   25.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\express\lib\router\index.js:1:1
+      4    1.1%      Function: ^openSync node:fs:576:18
+      4  100.0%        Function: ^readFileSync node:fs:450:22
+      3   75.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      3  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1   25.0%          Function: ^fileLoader C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:290:20
+      1  100.0%            Function: ^handleCache C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ejs\lib\ejs.js:208:21
+      4    1.1%      Function: ^URL node:internal/url:620:14
+      2   50.0%        Function: ^URL node:internal/url:620:14
+      1   50.0%          Function: ^packageResolve node:internal/modules/esm/resolve:875:24
+      1  100.0%            Function: ^moduleResolve node:internal/modules/esm/resolve:966:23
+      1   50.0%          Function: ^moduleResolve node:internal/modules/esm/resolve:966:23
+      1  100.0%            Function: ^defaultResolve node:internal/modules/esm/resolve:1039:24
+      1   25.0%        LazyCompile: ~legacyMainResolve node:internal/modules/esm/resolve:299:27
+      1  100.0%          Function: ^packageResolve node:internal/modules/esm/resolve:875:24
+      1  100.0%            Function: ^moduleResolve node:internal/modules/esm/resolve:966:23
+      1   25.0%        Function: ^resolve node:internal/modules/esm/loader:509:16
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      5    1.1%    Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      5  100.0%      Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      5  100.0%        Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      5  100.0%          Function: ^require node:internal/modules/cjs/helpers:101:31
+      1   20.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\ws\lib\validation.js:1:1
+      1   20.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\side-channel\index.js:1:1
+      1   20.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\qs\lib\utils.js:1:1
+      1   20.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\fs-extra\lib\util\stat.js:1:1
+      1   20.0%            Function: ~<anonymous> C:\Damian\BackEnd\Desafios\Desafio15\node_modules\fs-extra\lib\index.js:1:1
+
