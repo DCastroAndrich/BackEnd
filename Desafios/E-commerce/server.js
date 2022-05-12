@@ -55,15 +55,31 @@ app.use(
 passport.use("login",new LocalStrategy(async (username, password, done) => {
     
     const user = await Users.findUser(username, (error, doc)=>{
-      if(error === "error"){return done(error)}
+      if(error === "error"){
+        return done(error)
+      }      
       const verifyPassword = await bcrypt.compare(password, doc.password)
-      if (!verifyPassword) {return (null, false)}
+      if (!verifyPassword) {
+        return (null, false)
+      }
       return done(null, user)
-
     })
-   
+
   })
 );
+
+passport.serializeUser((user, done)=>{
+  done(null, user)
+})
+passport.deserializeUser(async (username, done)=>{
+  const user = await Users.findUser(username)
+  done(null, user)
+
+})
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(morgan("tiny"));
 app.use(cookieParser());
