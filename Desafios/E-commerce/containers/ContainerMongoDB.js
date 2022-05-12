@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 import config from "../utils/config.js";
 
 const URL = config.mongodb.url;
@@ -110,6 +111,31 @@ class ContainerMongoDB {
       });
       console.log(result);
       return result;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async findUser(username, cb) {
+    try {
+      const doc = await this.collection.find({
+        username: username,
+      });
+      cb("true", doc);
+    } catch (error) {
+      console.error(error);
+      cb("error");
+    }
+  }
+  async createuser(userData) {
+    try {
+      const { password } = userData;
+      const hash = await bcrypt.hash(password, 10);
+
+      const newUser = new this.collection({ ...userData, password: hash });
+
+      let doc = await newUser.save();
+
+      return doc;
     } catch (error) {
       console.error(error);
     }

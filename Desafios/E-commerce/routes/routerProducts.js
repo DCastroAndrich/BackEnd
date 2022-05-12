@@ -1,7 +1,10 @@
-import express from "express";
-const routerProducts = express.Router();
-const admin = true;
+import { Router } from "express";
+const routerProducts = new Router();
 
+/* import express from "express";
+const routerProducts = express.Router(); */
+
+const admin = true;
 
 import { DAOProducts } from "../containers/DAO's/imports.js";
 

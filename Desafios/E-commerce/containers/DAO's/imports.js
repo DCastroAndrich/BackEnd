@@ -4,6 +4,7 @@ import ProductDAOFirebase from "./product/ProductDAOFirebase.js";
 import CartDAOFirebase from "./cart/CartDAOFirebase.js";
 import CartDAOMongoDB from "./cart/CartDAOMongoDB.js";
 
+
 let DAOProducts;
 let DAOCarts;
 
@@ -15,6 +16,7 @@ switch (process.env.DBTYPE) {
   case "Firebase":
     DAOProducts = ProductDAOFirebase;
     DAOCarts = CartDAOFirebase;
+
     break;
   default:
     DAOProducts = ProductDAOMongoDB;
@@ -23,4 +25,4 @@ switch (process.env.DBTYPE) {
     break;
 }
 
-export { DAOProducts, DAOCarts };
+export { DAOProducts, DAOCarts, DAOUsers };

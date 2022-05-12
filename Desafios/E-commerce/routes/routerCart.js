@@ -1,6 +1,10 @@
-import express from "express";
-const routerCart = express.Router();
+import { Router } from "express";
+const routerCart = new Router()
 
+
+/* import express from "express";
+const routerCart = express.Router();
+ */
 import { DAOCarts } from "../containers/DAO's/imports.js";
 
 const apiCart = new DAOCarts();
