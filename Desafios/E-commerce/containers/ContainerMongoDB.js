@@ -115,7 +115,18 @@ class ContainerMongoDB {
       console.error(error);
     }
   }
-  async findUser(username, cb) {
+  async findUser(username) {
+    try {
+      const doc = await this.collection.find({
+        username: username,
+      });
+      console.log(doc);
+      return doc;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  /* async findUser(username, cb) {
     try {
       const doc = await this.collection.find({
         username: username,
@@ -125,7 +136,8 @@ class ContainerMongoDB {
       console.error(error);
       cb("error");
     }
-  }
+  } */
+
   async createuser(userData) {
     try {
       const { password } = userData;

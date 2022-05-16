@@ -17,14 +17,14 @@ class UsersDAOMongoDB extends ContainerMongoDB {
         required: true,
         max: 150,
       },      
+      age: {
+        type: Number,
+      },
       address: {
         type: String,
         max: 400,
       },
-      age: {
-        type: Number,
-      },
-      cellphone: {
+      phone: {
         type: Number,
         required: true,
       },

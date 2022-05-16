@@ -25,4 +25,4 @@ switch (process.env.DBTYPE) {
     break;
 }
 
-export { DAOProducts, DAOCarts, DAOUsers };
+export { DAOProducts, DAOCarts };

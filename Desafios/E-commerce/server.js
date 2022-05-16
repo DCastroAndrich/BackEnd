@@ -8,19 +8,14 @@ import morgan from "morgan";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import bcrypt from "bcrypt"
+import passport from "passport";
 
 import connectMongo from "connect-mongo";
 
-import passport from "passport";
-import { Strategy } from "passport-local";
-const LocalStrategy = Strategy;
-
-import UsersDAOMongoDB from "./containers/DAO's/users/UsersDAOMongoDB.js";
-const Users = new UsersDAOMongoDB();
-
+import routerAuth from "./routes/routerAuth.js";
 import routerProducts from "./routes/routerProducts.js";
 import routerCart from "./routes/routerCart.js";
+import routerHome from "./routes/routerHome.js";
 
 /* INSTANCIACION */
 const app = express();
@@ -50,36 +45,8 @@ app.use(
   })
 );
 
-// ==== Passport Local ====
-
-passport.use("login",new LocalStrategy(async (username, password, done) => {
-    
-    const user = await Users.findUser(username, (error, doc)=>{
-      if(error === "error"){
-        return done(error)
-      }      
-      const verifyPassword = await bcrypt.compare(password, doc.password)
-      if (!verifyPassword) {
-        return (null, false)
-      }
-      return done(null, user)
-    })
-
-  })
-);
-
-passport.serializeUser((user, done)=>{
-  done(null, user)
-})
-passport.deserializeUser(async (username, done)=>{
-  const user = await Users.findUser(username)
-  done(null, user)
-
-})
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.use(morgan("tiny"));
 app.use(cookieParser());
@@ -88,9 +55,12 @@ app.use(express.static("public"));
 
 routerProducts.use(bodyParser.json());
 routerCart.use(bodyParser.json());
+routerAuth.use(bodyParser.json());
+routerHome.use(bodyParser.json());
 
 /* RUTAS */
-
+app.use("/", routerAuth);
+app.use("/home", routerHome);
 app.use("/api/productos/", routerProducts);
 app.use("/api/carrito/", routerCart);
 
