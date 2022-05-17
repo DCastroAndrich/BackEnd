@@ -1,11 +1,18 @@
-const config = {
+import yargs from "yargs";
+
+const args = yargs(process.argv.slice(2)).default({
+  port: 8080,
+  mode: "CLUSTER",
+}).argv;
+
+export default {
+  PORT: args,
+  MODE: args.mode,
   mongodb: {
-    url: "mongodb+srv://DCastroAndrich:165940@clusterecommerce.bn1br.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    url: process.env.MONGO_URL,
   },
   firebase: {
     route:
       "./db/ecommerce-backend-43c06-firebase-adminsdk-54ok2-723cd01a3b.json",
   },
 };
-
-export default config;

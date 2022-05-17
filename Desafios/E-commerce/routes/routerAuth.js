@@ -15,18 +15,6 @@ const routerAuth = new Router();
 
 
 
-// ==== MULTER ====
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/users");
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()} - ${file.originalname}`);
-  },
-});
-
-const upload = multer({ storage: storage });
 
 
 // ==== PASSPORT LOCAL ====
@@ -114,6 +102,20 @@ routerAuth.get("/login-error", (req, res) => {
 });
 
 // ==== REGISTER NEW USER ====
+
+// ==== MULTER ====
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/users");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()} - ${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 
 routerAuth.get("/register", (req, res) => {
   res.render(path.join(process.cwd(), "/views/pages/register.ejs"));
