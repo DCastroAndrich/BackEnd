@@ -44,6 +44,35 @@ app.set("view engine", "ejs");
 // ==== gzip ====
 app.use(compression());
 
+app.use(morgan("tiny"));
+
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+// ==== PASSPORT LOCAL ====
+
+let strategy = new LocalStrategy(async (username, password, done) => {
+  let user;
+
+  try {
+    user = await Users.findUser(username);
+    if (!user) {
+      return done(null, false, { message: "User not found" });
+    }
+  } catch (error) {
+    return done(error);
+  }
+  let verifyPassword = bcrypt.compare(password, user[0].password);
+  if (!verifyPassword) {
+    return done(null, false, { message: "Invalid password" });
+  }
+  return done(null, user);
+});
+
+passport.use(strategy);
+
 // ==== Mongo Atlas Session ====
 
 const MongoStore = connectMongo.create({
@@ -60,50 +89,11 @@ app.use(
     cookie: { maxAge: 60000 },
   })
 );
-
-// ==== PASSPORT LOCAL ====
-
-let strategy = new LocalStrategy(async (username, password, done) => {
-  let user;
-  try {
-    user = await Users.findUser(username);
-    if (!user) {
-      return done(null, false);
-    }
-  } catch (error) {
-    return error;
-  }
-  let verifyPassword = await bcrypt.compare(password, user.password);
-  if (!verifyPassword) {
-    return done(null, false);
-  }
-  return done(null, user);
-});
-
-/* passport.use(
-  new LocalStrategy(async (username, password, done) => {
-    let user;
-    try {
-      user = await Users.findUser(username, (error, doc) => {
-        if (error === "error") {
-          return done(error);
-        }
-      });
-    } catch (error) {
-      console.error(error);
-    }
-    const verifyPassword = bcrypt.compare(password, doc.password);
-    if (!verifyPassword) {
-      return null, false;
-    }
-    return done(null, user);
-  })
-); */
-
-passport.use(strategy);
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  done(null, user.username);
+  done(null, user[0].username);
 });
 passport.deserializeUser(async (username, done) => {
   try {
@@ -115,7 +105,6 @@ passport.deserializeUser(async (username, done) => {
   } catch (error) {
     done(error);
   }
-  done(null, user);
 });
 
 /* RUTAS */
@@ -190,14 +179,6 @@ routerAuth.get("/logout", (req, res) => {
   }
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(morgan("tiny"));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
-
 routerProducts.use(bodyParser.json());
 routerCart.use(bodyParser.json());
 routerAuth.use(bodyParser.json());
@@ -205,7 +186,7 @@ routerHome.use(bodyParser.json());
 
 /* RUTAS */
 app.use("/", routerAuth);
-app.use("/home", routerHome);
+app.use("/home/", routerHome);
 app.use("/api/productos/", routerProducts);
 app.use("/api/carrito/", routerCart);
 
