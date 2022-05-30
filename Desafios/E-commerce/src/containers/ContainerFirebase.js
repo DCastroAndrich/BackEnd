@@ -1,5 +1,6 @@
 import admin from "firebase-admin";
 import config from "../utils/config.js";
+import logger from "../utils/logger.js";
 
 const serviceAccount = config.firebase.route;
 
@@ -25,7 +26,7 @@ class ContainerFirebase {
       }));
       return response;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 
@@ -38,7 +39,7 @@ class ContainerFirebase {
       const response = item.data();
       return response;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 
@@ -51,10 +52,10 @@ class ContainerFirebase {
         timestamp: new Date(),
         products: [],
       });
-      console.log("Carrito creado", doc.id);
+      logger.info("Carrito creado", doc.id);
       return doc.id;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 
@@ -66,9 +67,9 @@ class ContainerFirebase {
       await doc.create({
         ...obj,
       });
-      console.log("Datos insertados");
+      logger.info("Datos insertados");
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 
@@ -86,9 +87,9 @@ class ContainerFirebase {
       await doc.update({
         products: admin.firestore.FieldValue.arrayUnion({ ...prod }),
       });
-      console.log("Producto agregado", item);
+      logger.info("Producto agregado", item);
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 
@@ -100,10 +101,10 @@ class ContainerFirebase {
       let item = await doc.update({
         ...obj,
       });
-      console.log("Se actualizo el siguiente elemento", item);
+      logger.info("Se actualizo el siguiente elemento", item);
       return item;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 
@@ -113,10 +114,10 @@ class ContainerFirebase {
       const query = db.collection(this.collection);
       const doc = query.doc(`${id}`);
       const item = doc.delete();
-      console.log("Se ha eliminado el siguiente elemento", item);
+      logger.info("Se ha eliminado el siguiente elemento", item);
       return item;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   }
 }

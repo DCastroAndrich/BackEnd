@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import logger from "../utils/logger"
 
 class ContainerFS {
   fileroute;
@@ -12,7 +13,7 @@ class ContainerFS {
       const arr = JSON.parse(content);
       return arr;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
       return [];
     }
   }
@@ -24,7 +25,7 @@ class ContainerFS {
 
       return obj;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
       return { error: `elemento no encontrado` };
     }
   }

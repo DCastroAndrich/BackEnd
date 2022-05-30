@@ -1,37 +1,33 @@
 /* MODULOS */
-
 import "dotenv/config";
+
 import express from "express";
-import config from "./utils/config.js";
+import { Router } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
-
-import { Strategy } from "passport-local";
-const LocalStrategy = Strategy;
-import bcrypt from "bcrypt";
-import { Router } from "express";
-import path from "path";
-import multer from "multer";
-import UsersDAOMongoDB from "./containers/DAO's/users/UsersDAOMongoDB.js";
-const Users = new UsersDAOMongoDB();
-
-const routerAuth = new Router();
-
 import cluster from "cluster";
 import { cpus } from "os";
-const numCpus = cpus().length;
-import logger from "./utils/logger.js";
-
 import connectMongo from "connect-mongo";
+import { Strategy } from "passport-local";
+import bcrypt from "bcrypt";
+import path from "path";
+import multer from "multer";
 
-//import routerAuth from "./routes/routerAuth.js";
-import routerProducts from "./routes/routerProducts.js";
-import routerCart from "./routes/routerCart.js";
-import routerHome from "./routes/routerHome.js";
+import config from "./src/utils/config.js";
+import logger from "./src/utils/logger.js";
+import UsersDAOMongoDB from "./src/service/users/UsersDAOMongoDB.js";
+import routerProducts from "./src/routes/routerProducts.js";
+import routerCart from "./src/routes/routerCart.js";
+import routerHome from "./src/routes/routerHome.js";
+
+const LocalStrategy = Strategy;
+const Users = new UsersDAOMongoDB();
+const routerAuth = new Router();
+const numCpus = cpus().length;
 
 /* INSTANCIACION */
 const app = express();
@@ -45,7 +41,6 @@ app.set("view engine", "ejs");
 app.use(compression());
 
 app.use(morgan("tiny"));
-
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -120,7 +115,7 @@ routerAuth.get("/login", (req, res) => {
   if (username) {
     res.redirect("/home");
   } else {
-    res.render(path.join(process.cwd(), "/views/pages/login.ejs"));
+    res.render(path.join(process.cwd(), "/src/views/pages/login.ejs"));
   }
 });
 
@@ -133,7 +128,7 @@ routerAuth.post(
 );
 
 routerAuth.get("/login-error", (req, res) => {
-  res.render(path.join(process.cwd(), "/views/pages/login-error.ejs"));
+  res.render(path.join(process.cwd(), "/src/views/pages/login-error.ejs"));
 });
 
 // ==== REGISTER NEW USER ====
@@ -152,12 +147,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 routerAuth.get("/register", (req, res) => {
-  res.render(path.join(process.cwd(), "/views/pages/register.ejs"));
+  res.render(path.join(process.cwd(), "/src/views/pages/register.ejs"));
 });
 
 routerAuth.post("/register", upload.single("avatar"), async (req, res) => {
   const newUser = await Users.createuser(req.body);
-  console.log(newUser);
+  logger.info(newUser);
   res.redirect("/home");
 });
 
@@ -167,7 +162,7 @@ routerAuth.get("/logout", (req, res) => {
   if (username) {
     req.session.destroy((err) => {
       if (!err) {
-        res.render(path.join(process.cwd(), "/views/pages/logout.ejs"), {
+        res.render(path.join(process.cwd(), "/src/views/pages/logout.ejs"), {
           username,
         });
       } else {
