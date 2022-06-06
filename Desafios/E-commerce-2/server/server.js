@@ -16,10 +16,16 @@ import multer from "multer";
 import { Router } from "express";
 import cors from "cors";
 
+import ProductRouter from "./src/routes/product.routes.js";
+import CartRouter from "./src/routes/cart.routes.js";
+
+import UserController from "./src/controllers/user.controller.js";
+const Users = new UserController();
+
 const app = express();
 
 const numCpus = cpus().length;
-//const LocalStrategy = Strategy;
+const LocalStrategy = Strategy;
 //const routerAuth = new Router();
 
 /* MIDDLEWARES */
@@ -50,10 +56,10 @@ app.use(
 
 /* PASSPORT - SESSION - MULTER */
 
-/* let strategy = new LocalStrategy(async (username, password, done) => {
+let strategy = new LocalStrategy(async (username, password, done) => {
   let user;
   try {
-    user = await Users.findUser(username);
+    user = await Users.getUser(username);
     if (!user) {
       return done(null, false, { message: "User not found" });
     }
@@ -77,7 +83,7 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser(async (username, done) => {
   try {
-    let user = await Users.findUser(username);
+    let user = await Users.getUser(username);
     if (!user) {
       return done(new Error("User not found"));
     }
@@ -85,7 +91,7 @@ passport.deserializeUser(async (username, done) => {
   } catch (error) {
     done(error);
   }
-}); */
+});
 
 /* LOGIN/REGISTER ROUTES */
 
@@ -154,6 +160,9 @@ passport.deserializeUser(async (username, done) => {
   }); */
 
 /* ROUTES */
+
+app.use("/api/products/", new ProductRouter().start());
+app.use("api/carts/", new CartRouter().start());
 
 /* SERVIDOR */
 const PORT = config.srv.PORT;

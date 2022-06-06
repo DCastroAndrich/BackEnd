@@ -2,12 +2,10 @@
 
 ## Routes:
 
-- product.routes.js
-- cart.routes.js
 - home.routes.js
 
-## Controllers:
+## Services
 
-- cart.controller.js
+- Hashear password en File y Mem
 
 _Acomodar en server.js todo lo correspondiente a las rutas, al login, passport y multer_

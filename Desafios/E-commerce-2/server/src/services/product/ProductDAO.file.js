@@ -1,6 +1,6 @@
 import DAO from "../../classes/DAO.class.js";
 import logger from "../../utils/logger.js";
-import config from "../../utils/config";
+import config from "../../utils/config.js";
 import { promises as fs } from "fs";
 
 class ProductDAOFile extends DAO {

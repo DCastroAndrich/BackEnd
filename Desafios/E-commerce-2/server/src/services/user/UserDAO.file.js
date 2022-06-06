@@ -3,31 +3,34 @@ import logger from "../../utils/logger.js";
 import config from "../../utils/config.js";
 import { promises as fs } from "fs";
 
-class CartDAOFile extends DAO {
+class UserDAOFile extends DAO {
   constructor() {
     super();
-    this.path = `${config.fileDB.path}/carts.json`;
+    this.path = `${config.fileDB}/users.json`;
   }
+
   async getAll() {
     try {
       const docs = await fs.readFile(this.path, "utf8");
       return JSON.parse(docs);
     } catch (error) {
-      logger.error("Error getting all carts", error);
+      logger.error("Error getting all users", error);
       return [];
     }
   }
+
   async getById(id) {
     try {
       const docs = await this.getAll();
       let doc = docs.find((item) => item.id == id);
       return doc;
     } catch (error) {
-      logger.error("Error getting cart", error);
-      return { error: `Error getting cart` };
+      logger.error("Error getting user", error);
+      return { error: `Error getting user` };
     }
   }
-  async save() {
+
+  async save(obj) {
     const docs = await this.getAll();
     let newId;
     if (docs.length === 0) {
@@ -35,20 +38,21 @@ class CartDAOFile extends DAO {
     } else {
       newId = docs[docs.length - 1].id + 1;
     }
-    const newObj = { id: newId };
+    const newObj = { ...obj, id: newId };
     docs.push(newObj);
 
     try {
       await fs.writeFile(this.path, JSON.stringify(docs, null, 2));
       return docs;
     } catch (error) {
-      logger.error("Error saving new cart");
-      throw new Error(`Error saving new cart: ${error}`);
+      logger.error("Error saving new user");
+      throw new Error(`Error saving new user: ${error}`);
     }
   }
+
   async update(obj) {
     const docs = await this.getAll();
-    const index = docs.findIndex((cart) => cart.id === obj.id);
+    const index = docs.findIndex((product) => product.id === obj.id);
     if (index == -1) {
       throw new Error("ID not found");
     } else {
@@ -56,13 +60,14 @@ class CartDAOFile extends DAO {
       try {
         await fs.writeFile(this.path, JSON.stringify(docs, null, 2));
       } catch (error) {
-        throw new Error(`Error updating cart: ${error}`);
+        throw new Error(`Error updating user: ${error}`);
       }
     }
   }
+
   async deleteById(id) {
     const docs = await this.getAll();
-    const index = docs.findIndex((cart) => cart.id === id);
+    const index = docs.findIndex((product) => product.id === id);
     if (index == -1) {
       throw new Error("ID not found");
     } else {
@@ -71,9 +76,9 @@ class CartDAOFile extends DAO {
     try {
       await fs.writeFile(this.path, JSON.stringify(docs, null, 2));
     } catch (error) {
-      throw new Error(`Error deleting cart: ${error}`);
+      throw new Error(`Error deleting user: ${error}`);
     }
   }
 }
 
-export default CartDAOFile;
+export default UserDAOFile;

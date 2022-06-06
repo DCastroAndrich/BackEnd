@@ -6,6 +6,7 @@ import MongoAtlasClient from "../../classes/MongoAtlasClient.class.js";
 
 class CartDAOMongo extends DAO {
   constructor() {
+    super()
     this.collection = CartModel;
     this.conn = new MongoAtlasClient();
   }
@@ -81,6 +82,24 @@ class CartDAOMongo extends DAO {
       logger.info(`Cart updated: ${JSON.stringify(doc)}`);
     }
   }
+  async deleteCartID(id) {
+    let doc = null;
+    try {
+      await this.conn.connect();
+      doc = await this.collection.deleteOne({ _id: id });
+      logger.info(doc);
+      return doc;
+    } catch (error) {
+      const err = new CustomError(500, "Error deleting cart", error);
+      logger.error(err);
+      throw err;
+    } finally {
+      this.conn.disconnect();
+      logger.info(`Cart deleted: ${JSON.stringify(doc)}`);
+    }
+
+  }
+  
 
   async deleteById(id, id_prod) {
     let doc = null;
