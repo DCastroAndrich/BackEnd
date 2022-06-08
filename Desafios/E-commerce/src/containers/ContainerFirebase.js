@@ -101,7 +101,7 @@ class ContainerFirebase {
       let item = await doc.update({
         ...obj,
       });
-      logger.info("Se actualizo el siguiente elemento", item);
+      logger.info("Se actualizo el siguiente elemento", doc);
       return item;
     } catch (error) {
       logger.error(error);
@@ -114,7 +114,7 @@ class ContainerFirebase {
       const query = db.collection(this.collection);
       const doc = query.doc(`${id}`);
       const item = doc.delete();
-      logger.info("Se ha eliminado el siguiente elemento", item);
+      logger.info("Se ha eliminado el siguiente elemento", doc);
       return item;
     } catch (error) {
       logger.error(error);
