@@ -1,0 +1,87 @@
+## CREATE ##
+
+mutation{
+  createProduct(obj:{
+    name: "Berries",
+    description: "Fresh Strawberries",
+    thumbnail: "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Strawberry-128.png",
+    price: 3.15,
+    stock: 200,
+    
+    
+  }){
+    id,
+    name,
+    description
+  }
+}
+mutation{
+  createProduct(obj:{
+    name: "Berries",
+    description: "Fresh Blueberries",
+    thumbnail: "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Black_Berries-128.png",
+    price: 5.05,
+    stock: 100,
+    
+    
+  }){
+    id,
+    name,
+    description
+  }
+  
+}
+mutation{
+  createProduct(obj:{
+    name: "Berries",
+    description: "Fresh Cranberries",
+    thumbnail: "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Black_Berries-128.png",
+    price: 8.75,
+    stock: 50,
+    
+    
+  }){
+    id,
+    name,
+    description
+  }
+  
+}
+
+
+
+## UPDATE ##
+
+mutation{
+  updateProduct(id:"a96dbe36763c1194ea09", obj:{
+    description: "Old BlueBerries"
+  } ){
+    description
+  }
+}
+
+
+## DELETE ##
+
+mutation{
+  deleteProduct(id:"8b3387702ec62032a825"){
+    id,
+    name,
+    description,
+    stock
+  }
+}
+
+
+## GET ##
+
+query{
+  getProducts{
+    id,
+    name,
+    description,
+    stock
+  }
+}
+
+
