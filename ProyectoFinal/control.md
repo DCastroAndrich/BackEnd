@@ -11,6 +11,13 @@
 
 
 - **CARRITOS**
+    - *DAOFactory*
+    - *Model*
+    - *DAO mem y mongo*
+    - *Controller (modificar res para render de vistas)*
+    - *Routes*
+
+
 - **MENSAJES**
 - **ORDENES**
 - **USUARIOS**
