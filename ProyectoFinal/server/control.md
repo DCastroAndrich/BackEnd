@@ -17,10 +17,11 @@
     - *Controller (modificar res para render de vistas)*
     - *Routes*
 
-
-- **MENSAJES**
-- **ORDENES**
 - **USUARIOS**
+    - *DAOFactory*
+    - *Model*
+    - *DAO mem y mongo (modificar hash para la creacion de nuevos usuarios **{buscar en ecommerce/container/mongo}**)* 
+    - *Controller falta terminar*
 
 
 - **UTILS**
@@ -38,4 +39,13 @@
     - *DBClient*
     - *MongoAtlas Client*
 
-    
+- **AUTH**
+    - *JWT*
+
+
+## PENDIENTES:
+
+- **MENSAJES**
+- **ORDENES**
+- **SERVER**
+- **VISTAS**

@@ -16,6 +16,9 @@ const config = {
     MODE: process.env.MODE || "CLUSTER",
     PERSISTENCE: process.env.PERSISTENCE || "MEM",
   },
+  jwt: {
+    PRIVATE_KEY: process.env.PRIVATE_KEY
+  }
 };
 
 export default config;

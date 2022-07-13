@@ -1,6 +1,6 @@
 import config from "../utils/config.js";
-import ProductsDAOMongo from "../services/productos/ProductosDAO.mongo.js";
-import ProductsDAOMem from "../services/productos/ProductosDAO.mem.js";
+import ProductsDAOMongo from "../services/products/ProductsDAO.mongo.js";
+import ProductsDAOMem from "../services/products/ProductsDAO.mem.js";
 
 class ProductsDAOFactory {
   static get() {

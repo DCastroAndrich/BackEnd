@@ -1,8 +1,8 @@
 import CustomError from "../../classes/CustomError.class.js";
 import DAO from "../../classes/DAO.class.js";
 import logger from "../../utils/logger.js";
-import CartModel from "../../models/Cart.model.js";
 import MongoAtlasClient from "../../classes/MongoAtlasClient.class.js";
+import CartModel from "../../models/Cart.model.js";
 
 class CartDAOMongo extends DAO {
   constructor() {

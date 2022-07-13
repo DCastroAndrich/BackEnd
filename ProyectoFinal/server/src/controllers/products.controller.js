@@ -48,7 +48,7 @@ class ProductsController {
       const doc = await DAO.deleteById(req.params.id);
       res.status(200).json(doc);
     } catch (error) {
-      throw new CustomError(500, "Error in 'deletProduct' method", error);
+      throw new CustomError(500, "Error in 'deleteProduct' method", error);
     }
   };
 }

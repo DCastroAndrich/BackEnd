@@ -2,12 +2,13 @@ import CustomError from "../../classes/CustomError.class.js";
 import DAO from "../../classes/DAO.class.js";
 import logger from "../../utils/logger.js";
 import MongoAtlasClient from "../../classes/MongoAtlasClient.class.js";
-import ProductModel from "../../models/Product.model.js";
+import UserModel from "../../models/User.model.js";
+import bcrypt from "bcrypt";
 
-class ProductsDAOMongo extends DAO {
+class UsersDAOMongo extends DAO {
   constructor() {
     super();
-    this.collection = ProductModel;
+    this.collection = UserModel;
     this.connection = new MongoAtlasClient();
   }
 
@@ -17,46 +18,56 @@ class ProductsDAOMongo extends DAO {
       await this.connection.connect();
       docs = await this.collection.find({});
       logger.info(docs);
-      return docs;
     } catch (error) {
-      const err = new CustomError(500, "Error getting all products", error);
+      const err = new CustomError(500, "Error getting all users", error);
       logger.error(err);
       throw err;
     } finally {
       this.connection.disconnect();
-      logger.info(`${docs.length} products found`);
+      logger.info(`${docs.length} users found`);
     }
   }
-  async getById(id) {
+
+  async getById(username) {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.find({ _id: id });
+      doc = await this.collection.find({ email: username });
       logger.info(doc);
       return doc;
     } catch (error) {
-      const err = new CustomError(500, "Error getting product", error);
+      const err = new CustomError(500, "Error getting user", error);
       logger.error(err);
       throw err;
     } finally {
       this.connection.disconnect();
-      logger.info(`Product found: ${JSON.stringify(doc)}`);
+      logger.info(`User found: ${JSON.stringify(doc)}`);
     }
   }
-  async save(obj) {
+
+  async save(userdata) {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.save(obj);
+
+      const { password } = userdata;
+
+      const hash = await bcrypt.hash(password, 10);
+
+      const newUser = new this.collection({ ...userdata, password: hash });
+
+      doc = await newUser.save();
+
       logger.info(doc);
+
       return doc;
     } catch (error) {
-      const err = new CustomError(500, "Error saving new product", error);
+      const err = new CustomError(500, "Error saving new user", error);
       logger.error(err);
       throw err;
     } finally {
       this.connection.disconnect();
-      logger.info(`New product saved successfully: ${JSON.stringify(doc)}`);
+      logger.info(`New user saved successfully: ${JSON.stringify(doc)}`);
     }
   }
 
@@ -71,12 +82,12 @@ class ProductsDAOMongo extends DAO {
       logger.info(doc);
       return doc;
     } catch (error) {
-      const err = new CustomError(500, "Error updating product", error);
+      const err = new CustomError(500, "Error updating user", error);
       logger.error(err);
       throw err;
     } finally {
       this.connection.disconnect();
-      logger.info(`Product updated successfully: ${JSON.stringify(doc)}`);
+      logger.info(`User updated successfully: ${JSON.stringify(doc)}`);
     }
   }
 
@@ -88,14 +99,14 @@ class ProductsDAOMongo extends DAO {
       logger.info(doc);
       return doc;
     } catch (error) {
-      const err = new CustomError(500, "Error deleting product", error);
+      const err = new CustomError(500, "Error deleting user", error);
       logger.error(err);
       throw err;
     } finally {
       this.connection.disconnect();
-      logger.info(`Product deleted successfully: ${JSON.stringify(doc)}`);
+      logger.info(`User deleted successfully: ${JSON.stringify(doc)}`);
     }
   }
 }
 
-export default ProductsDAOMongo;
+export default UsersDAOMongo;

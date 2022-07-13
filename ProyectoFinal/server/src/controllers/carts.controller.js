@@ -1,9 +1,9 @@
 import CustomError from "../classes/CustomError.class.js";
-import CartDAOFactory from "../classes/CartDAOFactory.class.js";
+import CartsDAOFactory from "../classes/CartsDAOFactory.class.js";
 
-const DAO = CartDAOFactory.get();
+const DAO = CartsDAOFactory.get();
 
-class CartController {
+class CartsController {
   getAllCarts = async (req, res) => {
     try {
       let docs = await DAO.getAll();
@@ -63,4 +63,4 @@ class CartController {
   };
 }
 
-export default CartController;
+export default CartsController;

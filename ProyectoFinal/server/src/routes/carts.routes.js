@@ -1,11 +1,11 @@
 import express from "express";
 const router = express.Router();
 
-import CartController from "../controllers/cart.controller.js";
+import CartsController from "../controllers/carts.controller.js";
 
-class CartRouter {
+class CartsRouter {
   contructor() {
-    this.controller = new CartController();
+    this.controller = new CartsController();
   }
   start() {
     router.get("/", this.controller.getAllCarts);
@@ -18,4 +18,4 @@ class CartRouter {
   }
 }
 
-export default CartRouter;
+export default CartsRouter;
