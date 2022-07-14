@@ -1,10 +1,9 @@
 import express from "express";
+import CartsController from "../controllers/carts.controller.js";
 const router = express.Router();
 
-import CartsController from "../controllers/carts.controller.js";
-
 class CartsRouter {
-  contructor() {
+  constructor() {
     this.controller = new CartsController();
   }
   start() {

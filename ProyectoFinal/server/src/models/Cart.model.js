@@ -1,14 +1,22 @@
 import mongoose from "mongoose";
 
-const CartSchema = mongoose.Schema({
-  timestamp: {
-    type: Date,
-    default: Date.now,
+const CartSchema = mongoose.Schema(
+  {
+    userId: { type: String, required: true },
+    products: [
+      {
+        productId: {
+          type: String,
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+        },
+      },
+    ],
   },
-  products: {
-    type: Array,
-  },
-});
+  { timestamps: true }
+);
 
 const CartModel = mongoose.model("carritos", CartSchema);
 

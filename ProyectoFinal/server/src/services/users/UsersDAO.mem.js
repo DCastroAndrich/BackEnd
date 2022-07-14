@@ -1,28 +1,12 @@
 import CustomError from "../../classes/CustomError.class.js";
-import DAO from "../../classes/DAO.class.js";
 import logger from "../../utils/logger.js";
 
-class UsersDAOMem extends DAO {
+class UsersDAOMem {
   constructor() {
-    super();
     this.collections = [];
   }
 
-  getAll() {
-    let docs = [];
-    try {
-      docs = this.collection;
-      return docs;
-    } catch (error) {
-      const err = new CustomError(500, "Error getting all users", error);
-      logger.error(err);
-      throw err;
-    } finally {
-      logger.info(`${docs.length} users found`);
-    }
-  }
-
-  getById(id) {
+    findUser(id) {
     let doc = null;
 
     try {
@@ -39,7 +23,7 @@ class UsersDAOMem extends DAO {
     }
   }
 
-  save(obj) {
+  saveUser(obj) {
     let doc = null;
     try {
       let newId;
@@ -59,47 +43,7 @@ class UsersDAOMem extends DAO {
       logger.info(`New user saved successfully: ${JSON.stringify(doc)}`);
     }
   }
-
-  update(obj) {
-    let doc = null;
-    try {
-      const index = this.collection.findIndex(
-        (user) => user.id === obj.id
-      );
-      if (index == -1) {
-        doc = { code: 401, msg: "ID not found" };
-      } else {
-        this.collection[index] = obj;
-        doc = this.collection[index];
-      }
-      return doc;
-    } catch (error) {
-      const err = new CustomError(500, "Error updating user", error);
-      logger.error(err);
-      throw err;
-    } finally {
-      logger.info(`User updated: ${JSON.stringify(doc)}`);
-    }
-  }
-
-  deleteById(id) {
-    let doc = null;
-    try {
-      const index = this.collection.findIndex((user) => user.id == id);
-      if (id == -1) {
-        doc = { code: 401, msg: "ID not found" };
-      } else {
-        doc = this.collection.splice(index, 1);
-      }
-      return doc;
-    } catch (error) {
-      const err = new CustomError(500, "Error deleting user", error);
-      logger.error(err);
-      throw err;
-    } finally {
-      logger.info(`User deleted: ${JSON.stringify(doc)}`);
-    }
-  }
+  
 }
 
 export default UsersDAOMem;

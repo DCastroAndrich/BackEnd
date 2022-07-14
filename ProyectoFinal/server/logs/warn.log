@@ -1,0 +1,57 @@
+[2022-07-14T12:55:10.643] [ERROR] custom - CustomError {
+  code: 500,
+  description: 'Error getting all products',
+  detail: CustomError {
+    code: 500,
+    description: 'Error connecting to Mongo Atlas Data Base',
+    detail: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+        at NativeConnection.Connection.openUri (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/connection.js:689:11)
+        at /home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:378:10
+        at /home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/helpers/promiseOrCallback.js:32:5
+        at new Promise (<anonymous>)
+        at promiseOrCallback (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/helpers/promiseOrCallback.js:31:10)
+        at Mongoose._promiseOrCallback (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:1223:10)
+        at Mongoose.connect (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:377:20)
+        at MongoAtlasClient.connect (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/classes/MongoAtlasClient.class.js:16:25)
+        at ProductsDAOMongo.getAll (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/services/products/ProductsDAO.mongo.js:17:29)
+        at getAllProducts (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/controllers/products.controller.js:9:30)
+  }
+}
+[2022-07-14T13:04:05.904] [ERROR] custom - CustomError {
+  code: 500,
+  description: 'Error getting all products',
+  detail: CustomError {
+    code: 500,
+    description: 'Error connecting to Mongo Atlas Data Base',
+    detail: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+        at NativeConnection.Connection.openUri (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/connection.js:689:11)
+        at /home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:378:10
+        at /home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/helpers/promiseOrCallback.js:32:5
+        at new Promise (<anonymous>)
+        at promiseOrCallback (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/helpers/promiseOrCallback.js:31:10)
+        at Mongoose._promiseOrCallback (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:1223:10)
+        at Mongoose.connect (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:377:20)
+        at MongoAtlasClient.connect (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/classes/MongoAtlasClient.class.js:16:25)
+        at ProductsDAOMongo.getAll (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/services/products/ProductsDAO.mongo.js:17:29)
+        at getAllProducts (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/controllers/products.controller.js:9:30)
+  }
+}
+[2022-07-14T13:24:22.077] [ERROR] custom - CustomError {
+  code: 500,
+  description: 'Error getting all products',
+  detail: CustomError {
+    code: 500,
+    description: 'Error connecting to Mongo Atlas Data Base',
+    detail: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+        at NativeConnection.Connection.openUri (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/connection.js:689:11)
+        at /home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:378:10
+        at /home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/helpers/promiseOrCallback.js:32:5
+        at new Promise (<anonymous>)
+        at promiseOrCallback (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/helpers/promiseOrCallback.js:31:10)
+        at Mongoose._promiseOrCallback (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:1223:10)
+        at Mongoose.connect (/home/ryoma/Programacion/BackEnd/ProyectoFinal/server/node_modules/mongoose/lib/index.js:377:20)
+        at MongoAtlasClient.connect (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/classes/MongoAtlasClient.class.js:16:25)
+        at ProductsDAOMongo.getAll (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/services/products/ProductsDAO.mongo.js:17:29)
+        at getAllProducts (file:///home/ryoma/Programacion/BackEnd/ProyectoFinal/server/src/controllers/products.controller.js:9:30)
+  }
+}

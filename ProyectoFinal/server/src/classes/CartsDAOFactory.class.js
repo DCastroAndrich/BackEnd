@@ -6,7 +6,7 @@ class CartsDAOFactory {
   static get() {
     switch (config.srv.PERSISTENCE) {
       case "MONGOATLAS":
-        return CartsDAOMongo();
+        return new CartsDAOMongo();
       case "MEM":
         return new CartsDAOMem();
 

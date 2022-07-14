@@ -11,11 +11,22 @@ class ProductsDAOMongo extends DAO {
     this.connection = new MongoAtlasClient();
   }
 
-  async getAll() {
+  async getAll(query) {
     let docs = [];
+    const queryNew = query.new;
+    const queryCategory = query.category;
     try {
       await this.connection.connect();
-      docs = await this.collection.find({});
+      if (queryNew) {
+        docs = await this.collection.find().sort({ createdAt: -1 }).limit(1);
+      } else if (queryCategory) {
+        docs = await this.collection.find({
+          categories: { $in: [queryCategory] },
+        });
+      } else {
+        docs = await this.collection.find({});
+      }
+
       logger.info(docs);
       return docs;
     } catch (error) {
