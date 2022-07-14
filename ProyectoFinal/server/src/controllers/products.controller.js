@@ -6,7 +6,7 @@ const DAO = ProductsDAOFactory.get();
 class ProductsController {
   getAllProducts = async (req, res) => {
     try {
-      const docs = await DAO.getAll();
+      const docs = await DAO.getAll(req.query);
 
       res.status(200).json(docs);
     } catch (error) {
