@@ -33,7 +33,7 @@ class CartDAOMongo extends DAO {
 
     try {
       await this.connection.connect();
-      doc = await this.collection.find({ _id: id });
+      doc = await this.collection.find({ userId: id });
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -46,11 +46,11 @@ class CartDAOMongo extends DAO {
     }
   }
 
-  async save() {
+  async save(obj) {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.save();
+      doc = await this.collection.save(obj);
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -63,14 +63,17 @@ class CartDAOMongo extends DAO {
     }
   }
 
-  async update(id, id_prod) {
+  async update(id, prod) {
     let doc = null;
     try {
       await this.connection.connect();
-      let findProduct = await productos.find({ _id: id_prod });
-      doc = await this.collection.findByIdAndUpdate(id, {
-        $set: { products: { ...findProduct } },
-      });
+      doc = await this.collection.findByIdAndUpdate(
+        id,
+        {
+          $set: prod,
+        },
+        { new: true }
+      );
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -82,11 +85,12 @@ class CartDAOMongo extends DAO {
       logger.info(`Cart updated: ${JSON.stringify(doc)}`);
     }
   }
-  async deleteCartID(id) {
+
+  async deleteById(id) {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.deleteOne({ _id: id });
+      doc = await this.collection.findByIdAndDelete(id);
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -96,26 +100,6 @@ class CartDAOMongo extends DAO {
     } finally {
       this.connection.disconnect();
       logger.info(`Cart deleted: ${JSON.stringify(doc)}`);
-    }
-  }
-
-  async deleteById(id, id_prod) {
-    let doc = null;
-    try {
-      await this.connection.connect();
-      doc = await this.collection.findByIdAndUpdate(
-        { _id: id },
-        { $pull: { products: { _id: id_prod } } }
-      );
-      logger.info(doc);
-      return doc;
-    } catch (error) {
-      const err = new CustomError(500, "Error deleting product", error);
-      logger.error(err);
-      throw err;
-    } finally {
-      this.connection.disconnect();
-      logger.info(`Product deleted: ${JSON.stringify(doc)}`);
     }
   }
 }

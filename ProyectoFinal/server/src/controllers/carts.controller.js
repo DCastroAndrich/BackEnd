@@ -24,7 +24,7 @@ class CartsController {
 
   saveCart = async (req, res) => {
     try {
-      let doc = await DAO.save();
+      let doc = await DAO.save(req.body);
       res.status(200).json(doc);
     } catch (error) {
       throw new CustomError(500, "Error in 'saveCart' method", error);
@@ -33,9 +33,9 @@ class CartsController {
 
   updateCart = async (req, res) => {
     let cartID = req.params.id;
-    let prodID = req.params.id_prod;
+    let prod = req.body;
     try {
-      let doc = await DAO.update(cartID, prodID);
+      let doc = await DAO.update(cartID, prod);
       res.status(200).json(doc);
     } catch (error) {
       throw new CustomError(500, "Error in 'updateCart' method", error);
@@ -43,22 +43,12 @@ class CartsController {
   };
 
   deleteCart = async (req, res) => {
+    let cartID = req.params.id;
     try {
-      let doc = await DAO.deleteCartID(req.params.id);
+      let doc = await DAO.deleteById(cartID);
       res.status(200).json(doc);
     } catch (error) {
       throw new CustomError(500, "Error in 'deleteCart' method", error);
-    }
-  };
-
-  deleteFromCart = async (req, res) => {
-    let cartID = req.params.id;
-    let prodID = req.params.id_prod;
-    try {
-      let doc = await DAO.deleteById(cartID, prodID);
-      res.status(200).json(doc);
-    } catch (error) {
-      throw new CustomError(500, "Error in 'deleteFromCart' method", error);
     }
   };
 }

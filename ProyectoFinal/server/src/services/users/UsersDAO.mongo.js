@@ -9,12 +9,28 @@ class UsersDAOMongo {
     this.collection = UserModel;
     this.connection = new MongoAtlasClient();
   }
+  async getAll() {
+    let docs = [];
+    try {
+      await this.connection.connect();
+      docs = await this.collection.find({});
+      logger.info(docs);
+      return docs;
+    } catch (error) {
+      const err = new CustomError(500, "Error getting all users", error);
+      logger.error(err);
+      throw err;
+    } finally {
+      this.connection.disconnect();
+      logger.info(`${docs.length} users found`);
+    }
+  }
 
-  async findUser(username) {
+  async getById(id) {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.find({ username: username });
+      doc = await this.collection.findById(id);
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -27,7 +43,7 @@ class UsersDAOMongo {
     }
   }
 
-  async saveUser(userdata) {
+  async save(userdata) {
     let doc = null;
     try {
       await this.connection.connect();
@@ -50,6 +66,23 @@ class UsersDAOMongo {
     } finally {
       this.connection.disconnect();
       logger.info(`New user saved successfully: ${JSON.stringify(doc)}`);
+    }
+  }
+
+  async deleteById(id) {
+    let doc = null;
+    try {
+      await this.connection.connect();
+      doc = await this.collection.findByIdAndDelete(id);
+      logger.info(doc);
+      return doc;
+    } catch (error) {
+      const err = new CustomError(500, "Error deleting user", error);
+      logger.error(err);
+      throw err;
+    } finally {
+      this.connection.disconnect();
+      logger.info(`User deleted successfully: ${JSON.stringify(doc)}`);
     }
   }
 }

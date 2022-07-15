@@ -34,9 +34,10 @@ class ProductsController {
   };
 
   updateProduct = async (req, res) => {
-    const prod = { id: req.params.id, ...req.body };
+    let prodId = req.params.id;
+    let prod = req.body;
     try {
-      const doc = await DAO.update(prod);
+      const doc = await DAO.update(prodId, prod);
       res.status(200).json({ ...doc });
     } catch (error) {
       throw new CustomError(500, "Error in 'updateProduct' method", error);

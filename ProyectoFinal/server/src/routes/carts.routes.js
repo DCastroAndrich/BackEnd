@@ -1,5 +1,11 @@
 import express from "express";
 import CartsController from "../controllers/carts.controller.js";
+import {
+  verifyToken,
+  verifyTokenAndAdmin,
+  verifyTokenAndAuth,
+} from "../auth/jwt.verify.js";
+
 const router = express.Router();
 
 class CartsRouter {
@@ -7,12 +13,11 @@ class CartsRouter {
     this.controller = new CartsController();
   }
   start() {
-    router.get("/", this.controller.getAllCarts);
-    router.get("/:id/productos", this.controller.getCart);
-    router.post("/", this.controller.saveCart);
-    router.put("/:id/productos/:id_prod", this.controller.updateCart);
-    router.delete("/:id", this.controller.deleteCart);
-    router.delete("/:id/productos/:id_prod", this.controller.deleteFromCart);
+    router.get("/", verifyTokenAndAdmin, this.controller.getAllCarts);
+    router.get("/:id", verifyTokenAndAuth, this.controller.getCart);
+    router.post("/", verifyToken, this.controller.saveCart);
+    router.put("/:id", verifyTokenAndAuth, this.controller.updateCart);
+    router.delete("/:id", verifyTokenAndAuth, this.controller.deleteCart);
     return router;
   }
 }

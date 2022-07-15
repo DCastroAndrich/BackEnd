@@ -42,7 +42,7 @@ class ProductsDAOMongo extends DAO {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.find({ _id: id });
+      doc = await this.collection.findById(id);
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -71,13 +71,14 @@ class ProductsDAOMongo extends DAO {
     }
   }
 
-  async update(obj) {
+  async update(id, prod) {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.updateOne(
-        { _id: obj._id },
-        { $set: { ...obj } }
+      doc = await this.collection.findByIdAndUpdate(
+        id,
+        { $set: prod },
+        { new: true }
       );
       logger.info(doc);
       return doc;
@@ -95,7 +96,7 @@ class ProductsDAOMongo extends DAO {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.deleteOne({ _id: id });
+      doc = await this.collection.findByIdAndDelete(id);
       logger.info(doc);
       return doc;
     } catch (error) {
