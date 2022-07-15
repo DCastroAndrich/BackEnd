@@ -7,9 +7,7 @@ dotenv.config({
 
 const config = {
   mongodb: {
-    url:
-      process.env.MONGO_URL ||
-      "mongodb+srv://damianCA:165940@proyectobe.ejjql.mongodb.net/ecommercer?retryWrites=true&w=majority",
+    url: process.env.MONGO_URL,
     secret: "#hashSecret#",
   },
   srv: {
