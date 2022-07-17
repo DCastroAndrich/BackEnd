@@ -1,10 +1,6 @@
 import express from "express";
 import OrdersController from "../controllers/orders.controller.js";
-import {
-  verifyToken,
-  verifyTokenAndAdmin,
-  verifyTokenAndAuth,
-} from "../auth/jwt.verify.js";
+import { auth } from "../auth/jwt.verify.js";
 
 const router = express.Router();
 
@@ -13,11 +9,12 @@ class OrdersRouter {
     this.controller = new OrdersController();
   }
   start() {
-    router.get("/", verifyTokenAndAdmin, this.controller.getAllOrders);
-    router.get("/:id", verifyTokenAndAuth, this.controller.getOrder);
-    router.post("/", verifyToken, this.controller.saveOrder);
-    router.put("/:id", verifyTokenAndAdmin, this.controller.updateOrder);
-    router.delete("/:id", verifyTokenAndAdmin, this.controller.deleteOrder);
+    router.get("/", this.controller.getAllOrders);
+    router.get("/:id", this.controller.getOrder);
+    router.post("/",  this.controller.saveOrder);
+    router.put("/:id",  this.controller.updateOrder);
+    router.delete("/:id", this.controller.deleteOrder);
+    return router;
   }
 }
 export default OrdersRouter;

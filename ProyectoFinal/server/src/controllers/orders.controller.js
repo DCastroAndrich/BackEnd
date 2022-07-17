@@ -1,7 +1,6 @@
 import CustomError from "../classes/CustomError.class.js";
-import OrdersDAOFactory from "../classes/OrdersDAOFactory.class.js";
-
-const DAO = OrdersDAOFactory.get();
+import OrdersDAOMongo from "../services/orders/OrdersDAO.mongo.js";
+const DAO = new OrdersDAOMongo();
 
 class OrdersController {
   getAllOrders = async (req, res) => {

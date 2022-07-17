@@ -3,6 +3,7 @@ import DAO from "../../classes/DAO.class.js";
 import logger from "../../utils/logger.js";
 import MongoAtlasClient from "../../classes/MongoAtlasClient.class.js";
 import CartModel from "../../models/Cart.model.js";
+import ProductsModel from "../../models/Product.model.js";
 
 class CartDAOMongo extends DAO {
   constructor() {
@@ -33,7 +34,7 @@ class CartDAOMongo extends DAO {
 
     try {
       await this.connection.connect();
-      doc = await this.collection.find({ userId: id });
+      doc = await this.collection.find({ _id: id });
       logger.info(doc);
       return doc;
     } catch (error) {
@@ -46,20 +47,18 @@ class CartDAOMongo extends DAO {
     }
   }
 
-  async save(obj) {
-    let doc = null;
+  async save() {
     try {
       await this.connection.connect();
-      doc = await this.collection.save(obj);
-      logger.info(doc);
-      return doc;
+      const newCart = new this.collection();
+      let doc = await newCart.save();
+      logger.info(doc.id);
+      return doc.id;
     } catch (error) {
-      const err = new CustomError(500, "Error saving new cart", error);
-      logger.error(err);
-      throw err;
+      return new CustomError(500, "Error saving new cart", error);
     } finally {
       this.connection.disconnect();
-      logger.info(`New cart saved successfully: ${JSON.stringify(doc)}`);
+      logger.info(`New cart saved successfully: cartId # ${doc.id}`);
     }
   }
 
@@ -100,6 +99,41 @@ class CartDAOMongo extends DAO {
     } finally {
       this.connection.disconnect();
       logger.info(`Cart deleted: ${JSON.stringify(doc)}`);
+    }
+  }
+
+  async saveToCart(id, id_prod) {
+    try {
+      await this.connection.connect();
+      let findProduct = await ProductsModel.find({ _id: id_prod });
+      let filter = {_id: id}
+
+      let result = await this.collection.findByIdAndUpdate(filter, {
+        $push: {products: findProduct },
+      });
+      logger.info(result);
+      return result;
+    } catch (error) {
+      const err = new CustomError(500, "Error saving product to cart", error);
+      logger.error(err);
+      throw err;
+    } finally {
+      this.connection.disconnect();
+      logger.info(`Product saved to cart: ${JSON.stringify(findProduct)}`);
+    }
+  }
+  async eraseFromCart(id, id_prod) {
+    try {
+      await this.connection.connect();
+      let findCart = await this.collection.findById(id);
+      let result = await findCart.remove({products: id_prod});
+      logger.info(result);
+      return result;
+    } catch (error) {
+      logger.error(error);
+    } finally {
+      this.connection.disconnect();
+      logger.info(`Product erased from cart: ${JSON.stringify(result)}`);
     }
   }
 }

@@ -4,14 +4,20 @@ import config from "./src/utils/config.js";
 import cluster from "cluster";
 import { cpus } from "os";
 import logger from "./src/utils/logger.js";
-import ProductsRouter from "./src/routes/products.routes.js";
-import CartsRouter from "./src/routes/carts.routes.js";
 import compression from "compression";
 import bodyParser from "body-parser";
+import cors from "cors";
+
+import ProductsRouter from "./src/routes/products.routes.js";
+import CartsRouter from "./src/routes/carts.routes.js";
+import OrdersRouter from "./src/routes/orders.routes.js";
+import UsersRouter from "./src/routes/users.routes.js";
+import AuthRouter from "./src/routes/auth.routes.js";
 
 const app = express();
 const numCpus = cpus().length;
 
+app.use(cors());
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -20,6 +26,9 @@ app.use(express.static("public"));
 
 app.use("/productos/", new ProductsRouter().start());
 app.use("/carrito/", new CartsRouter().start());
+app.use("/ordenes/", new OrdersRouter().start());
+app.use("/usuarios/", new UsersRouter().start());
+app.use("/auth/", new AuthRouter().start());
 
 /* SERVER LISTEN */
 

@@ -19,6 +19,9 @@ const config = {
   jwt: {
     PRIVATE_KEY: process.env.PRIVATE_KEY,
   },
+  crypt: {
+    PASS_SECRET: process.env.PASS_SEC,
+  },
 };
 
 export default config;

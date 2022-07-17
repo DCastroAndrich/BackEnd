@@ -11,17 +11,16 @@ class ProductsDAOMongo extends DAO {
     this.connection = new MongoAtlasClient();
   }
 
-  async getAll(query) {
+  async getAll(params) {
     let docs = [];
-    const queryNew = query.new;
-    const queryCategory = query.category;
+    const queryNew = params;
+    const queryCategory = params;
     try {
       await this.connection.connect();
       if (queryNew) {
         docs = await this.collection.find().sort({ createdAt: -1 }).limit(1);
       } else if (queryCategory) {
-        docs = await this.collection.find({
-          categories: { $in: [queryCategory] },
+        docs = await this.collection.find({categories: { queryCategory },
         });
       } else {
         docs = await this.collection.find({});
@@ -58,9 +57,9 @@ class ProductsDAOMongo extends DAO {
     let doc = null;
     try {
       await this.connection.connect();
-      doc = await this.collection.save(obj);
+      doc = await this.collection.create(obj);
       logger.info(doc);
-      return doc;
+      return obj;
     } catch (error) {
       const err = new CustomError(500, "Error saving new product", error);
       logger.error(err);
